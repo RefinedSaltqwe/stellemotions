@@ -1,9 +1,31 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+
+const quickLinks = [
+  {
+    number: "01",
+    title: "Portfolio",
+    description: "View our recent work",
+    href: "#",
+  },
+  {
+    number: "02",
+    title: "Services",
+    description: "Wedding & portrait experience",
+    href: "#",
+  },
+  {
+    number: "03",
+    title: "Inquire",
+    description: "Let's create something beautiful",
+    href: "#",
+  },
+];
 
 const MarketingSection: React.FC = () => {
   return (
-    <section className="bg-[#d8d2c3] py-32">
+    <section className="bg-[#d8d2c3] pt-16 md:pt-32 pb-32">
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-12 gap-8">
           {/* Top Left Image */}
@@ -20,7 +42,7 @@ const MarketingSection: React.FC = () => {
 
           {/* Top Right Text */}
           <div className="col-span-7 md:col-span-5 md:col-start-6">
-            <p className="max-w-md text-sm leading-relaxed text-neutral-700">
+            <p className="max-w-md text-sm leading-relaxed text-foreground">
               <span className="font-semibold uppercase">
                 We Are Stelle Motions,
               </span>{" "}
@@ -33,7 +55,19 @@ const MarketingSection: React.FC = () => {
 
           {/* TRULY */}
           <div className="col-span-5 mt-20">
-            <h2 className="font-serif text-4xl sm:text-[5rem] lg:text-[8rem] leading-none text-white">
+            <h2
+              className="
+                font-serif
+                text-6xl
+                sm:text-[5rem]
+                lg:text-[8rem]
+                leading-none
+                [writing-mode:vertical-rl]
+                [text-orientation:mixed]
+                md:[writing-mode:horizontal-tb]
+                text-primary
+              "
+            >
               TRULY
             </h2>
           </div>
@@ -76,42 +110,50 @@ const MarketingSection: React.FC = () => {
 
           {/* DEEPLY Text Block */}
           <div className="col-span-5 col-start-8 flex flex-col justify-center">
-            <h2 className="font-serif text-4xl sm:text-[3rem] lg:text-[7rem] leading-none text-primary-foreground">
+            <h2 className="font-serif text-4xl sm:text-[3rem] lg:text-[7rem] leading-none text-primary">
               DEEPLY
             </h2>
 
-            <p className="mt-8 max-w-xs text-sm leading-relaxed text-neutral-700">
+            <p className="mt-8 max-w-xs text-sm leading-relaxed text-foreground">
               You are a couple who laughs together, explores the known and
               unknown together, seeks to create experiences that you will
               remember well into your old age.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="col-span-5 md:col-span-4 mt-24">
-            <div className="space-y-5 text-sm uppercase tracking-[0.2em] text-neutral-700">
-              <div className="border-b border-neutral-500 pb-3">
-                View The Portfolio
-              </div>
+          {/* Editorial Quick Links */}
+          <div className="col-span-12 md:col-span-6 mt-24 md:mt-10 md:pb-20">
+            <div className="space-y-4">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.number}
+                  href={link.href}
+                  className="group flex items-center justify-between border border-primary/15 bg-primary-foreground/20 px-6 py-3 backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                >
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.35em] text-foreground/60 group-hover:text-white/60">
+                      {link.number}
+                    </p>
 
-              <div className="border-b border-neutral-500 pb-3">
-                Browse Our Services
-              </div>
+                    <h3 className="mt-2 font-serif text-2xl">{link.title}</h3>
 
-              <div className="border-b border-neutral-500 pb-3">
-                Read The Journal
-              </div>
+                    <p className="mt-1 text-xs tracking-wide opacity-70">
+                      {link.description}
+                    </p>
+                  </div>
 
-              <div className="border-b border-neutral-500 pb-3">
-                {`Let's Connect`}
-              </div>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 group-hover:translate-x-1 group-hover:bg-white group-hover:text-black">
+                    →
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
 
           {/* Bottom Images */}
-          <div className="col-span-7 md:col-span-4 md:col-start-8 mt-24">
-            <div className="flex gap-6">
-              <div className="relative h-72 w-40">
+          <div className="col-span-12 md:col-span-4 md:col-start-8 md:self-end mt-10 md:mt-24">
+            <div className="flex gap-6 items-end">
+              <div className="relative h-72 w-[50%]">
                 <Image
                   src="/assets/images/couple-5.jpg"
                   alt=""
@@ -120,7 +162,7 @@ const MarketingSection: React.FC = () => {
                 />
               </div>
 
-              <div className="relative h-72 w-40">
+              <div className="relative h-72 w-[50%]">
                 <Image
                   src="/assets/images/couple-6.jpg"
                   alt=""
@@ -133,7 +175,7 @@ const MarketingSection: React.FC = () => {
 
           {/* Bottom Heading */}
           <div className="col-span-12 relative">
-            <h2 className="font-serif text-center text-6xl lg:text-9xl leading-none text-white absolute top-0 lg:-top-20">
+            <h2 className="font-serif text-center text-5xl lg:text-9xl leading-none text-primary absolute top-0 lg:-top-20">
               MADLY IN LOVE
             </h2>
           </div>

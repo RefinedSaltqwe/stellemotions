@@ -11,7 +11,7 @@ const ExploreMenuButton: React.FC = () => {
   return (
     <Button
       variant={"ghost"}
-      className="uppercase tracking-[0.25em] text-xs text-primary-foreground flex flex-row gap-2 p-0 hover:bg-transparent hover:text-primary-foreground"
+      className="uppercase tracking-[0.25em] text-xs text-primary-foreground flex flex-row gap-2 p-0 hover:bg-transparent hover:text-primary-foreground font-normal"
       onClick={() => setShowMenu(!showMenu)}
     >
       <ListIcon size={16} /> Explore
