@@ -2,7 +2,7 @@
 import { useNavbar } from "@/hooks/store/navbar";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import ExploreMenu from "./explore-menu";
+import ExploreMenuButton from "./explore-menu-button";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -18,12 +18,10 @@ export default function Hero() {
       if (rect.bottom <= 0 && !hasTriggeredRef.current) {
         hasTriggeredRef.current = true;
         setShowNav(true);
-        console.log("Show Navbar");
       }
-      if (rect.bottom >= 0 && hasTriggeredRef.current) {
+      if (rect.top >= 0 && hasTriggeredRef.current) {
         hasTriggeredRef.current = false;
         setShowNav(false);
-        console.log("Hide Navbar");
       }
     };
 
@@ -52,8 +50,8 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex flex-col">
         {/* Top Navigation */}
         {/* Top Left */}
-        <div className="absolute top-6 left-6">
-          <ExploreMenu />
+        <div className="absolute top-2 left-6">
+          <ExploreMenuButton />
         </div>
 
         {/* Right Side Vertical Text */}
@@ -74,18 +72,21 @@ export default function Hero() {
 
         {/* Bottom Typography */}
         <div className="pb-12 px-8 md:px-16">
-          <div className="flex  h-full items-start flex-col xl:flex-row justify-center gap-8 md:gap-16 text-primary-foreground">
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl">
+          <div className="flex  h-full items-start flex-col xl:flex-row justify-center gap-8 xl:gap-16 text-primary-foreground">
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl hidden md:block">
               STELLE
             </h1>
+            <h1 className="font-serif text-6xl md:text-8xl xl:text-9xl block md:hidden">
+              STELLE MOTIONS
+            </h1>
 
-            <div className="flex h-full flex-col items-start xl:items-center justify-center text-center text-xs md:text-sm tracking-wide">
+            <div className="flex h-full flex-col items-start xl:items-center justify-center text-center text-md tracking-wide">
               <span>documenting love,</span>
               <span>life & celebration</span>
               <span>one frame at a time</span>
             </div>
 
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl">
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl hidden md:block">
               MOTIONS
             </h1>
           </div>

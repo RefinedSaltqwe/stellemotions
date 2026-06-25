@@ -2,6 +2,7 @@
 import { useNavbar } from "@/hooks/store/navbar";
 import { cn } from "@/lib/utils";
 import { XIcon } from "@phosphor-icons/react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const menuList = [
@@ -10,6 +11,11 @@ const menuList = [
   { name: "Portfolio", link: "/portfolio" },
   { name: "Services", link: "/services" },
   { name: "Inquire", link: "/inquire" },
+];
+
+const socials = [
+  { name: "Instagram", link: "#" },
+  { name: "Facebook", link: "#" },
 ];
 
 const Menu: React.FC = () => {
@@ -47,7 +53,7 @@ const Menu: React.FC = () => {
       </div>
 
       {/* MENU LIST */}
-      <div className="flex text-primary-foreground font-serif">
+      <div className="flex text-primary-foreground font-serif flex-col">
         <div className="p-4 mx-auto mt-12 xl:mt-48">
           {menuList.map((item, index) => (
             <div
@@ -66,6 +72,20 @@ const Menu: React.FC = () => {
               </div>
             </div>
           ))}
+          <div className="flex items-center justify-start mt-12">
+            {socials.map((item, index) => (
+              <Link
+                key={item.name}
+                href="#"
+                className={cn(
+                  `px-4 uppercase text-sm hover:text-primary-foreground/80`,
+                  index !== 0 ? "border-l border-white/50" : "",
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

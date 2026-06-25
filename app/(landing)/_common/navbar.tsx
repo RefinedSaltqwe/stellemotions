@@ -2,7 +2,7 @@
 import { useNavbar } from "@/hooks/store/navbar";
 import { cn } from "@/lib/utils";
 import React from "react";
-import ExploreMenu from "./explore-menu";
+import ExploreMenuButton from "./explore-menu-button";
 
 const Navbar: React.FC = () => {
   const showNav = useNavbar((state) => state.showNav);
@@ -16,7 +16,9 @@ const Navbar: React.FC = () => {
         showNav ? "opacity-100 " : "opacity-0 pointer-events-none",
       )}
     >
-      <ExploreMenu />
+      <div className="px-6 py-2">
+        <ExploreMenuButton />
+      </div>
     </header>
   );
 };
