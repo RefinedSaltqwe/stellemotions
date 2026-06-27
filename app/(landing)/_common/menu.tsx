@@ -51,8 +51,8 @@ const Menu: React.FC = () => {
       </div>
 
       {/* MENU LIST */}
-      <div className="flex text-primary-foreground font-serif flex-col">
-        <div className="p-4 mx-auto mt-8 xl:mt-48">
+      <div className="flex flex-1 items-center justify-center text-primary-foreground font-serif">
+        <div className="p-4">
           <MenuList />
         </div>
       </div>

@@ -39,7 +39,7 @@ const MarketingSection: React.FC = () => {
 
           {/* Top Right Text */}
           <div className="col-span-7 md:col-span-5 md:col-start-6">
-            <p className="max-w-md leading-relaxed text-foreground">
+            <p className="max-w-md leading-relaxed text-foreground md:text-xl">
               <span className="font-semibold uppercase">
                 We Are Stelle Motions,
               </span>{" "}
@@ -99,7 +99,7 @@ const MarketingSection: React.FC = () => {
               MADLY
             </h2>
 
-            <p className="mt-8 max-w-xs leading-relaxed text-foreground">
+            <p className="mt-8 max-w-xs leading-relaxed text-foreground md:text-xl">
               You are a couple who laughs together, explores the known and
               unknown together, seeks to create experiences that you will
               remember well into your old age.
