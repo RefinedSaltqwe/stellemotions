@@ -4,6 +4,7 @@ import React from "react";
 
 type MenuListProps = {
   textSize?: string;
+  showSocial?: boolean;
 };
 
 const menuList = [
@@ -19,7 +20,10 @@ const socials = [
   { name: "Facebook", link: "#" },
 ];
 
-const MenuList: React.FC<MenuListProps> = ({ textSize = "text-6xl" }) => {
+const MenuList: React.FC<MenuListProps> = ({
+  textSize = "text-6xl",
+  showSocial = true,
+}) => {
   return (
     <>
       {menuList.map((item, index) => (
@@ -39,20 +43,22 @@ const MenuList: React.FC<MenuListProps> = ({ textSize = "text-6xl" }) => {
           </div>
         </div>
       ))}
-      <div className="flex items-center justify-start mt-12">
-        {socials.map((item, index) => (
-          <Link
-            key={item.name}
-            href="#"
-            className={cn(
-              `px-4 uppercase text-sm hover:text-primary-foreground/80`,
-              index !== 0 ? "border-l border-white/50" : "",
-            )}
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
+      {showSocial && (
+        <div className="flex items-center justify-start mt-12">
+          {socials.map((item, index) => (
+            <Link
+              key={item.name}
+              href="#"
+              className={cn(
+                `px-4 uppercase text-sm hover:text-primary-foreground/80`,
+                index !== 0 ? "border-l border-white/50" : "",
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </>
   );
 };

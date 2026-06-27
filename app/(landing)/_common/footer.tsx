@@ -1,34 +1,49 @@
 import React from "react";
 import MenuList from "./menu-list";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
-    <section className="flex flex-col w-full bg-primary text-primary-foreground/10 items-center">
-      <div className="flex items-center justify-center align-middle">
-        <div className="py-12 px-8 md:px-16">
-          <h1 className="font-serif text-6xl md:text-8xl xl:text-9xl">
-            STELLE MOTIONS
-          </h1>
+    <footer className="relative overflow-hidden bg-primary text-primary-foreground">
+      {/* Watermark */}
+      <h2 className="pointer-events-none absolute inset-x-0 top-8 text-center font-serif text-6xl sm:text-8xl lg:text-[10rem] leading-none text-primary-foreground/3">
+        STELLE
+        <br />
+        MOTIONS
+      </h2>
+
+      <div className="relative mx-auto flex max-w-6xl flex-col px-6 py-20 lg:py-28">
+        {/* Description */}
+        <div className="mx-auto max-w-xl text-center">
+          <p className="font-serif text-2xl md:text-2xl leading-relaxed">
+            Timeless, editorial-inspired wedding & portrait photography.
+          </p>
+
+          <p className="mt-4 text-sm text-primary-foreground/70 leading-7">
+            Capturing authentic love stories with a cinematic and refined
+            approach throughout Regina and beyond.
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <div className="mt-16 flex justify-center align-middle items-center flex-col lg:flex-row">
+          <MenuList textSize="text-lg md:text-xl" showSocial={false} />
+        </div>
+
+        {/* Social */}
+        <div className="mt-14 flex justify-center gap-8 text-xs uppercase tracking-[0.3em] text-primary-foreground/70">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-16 border-t border-primary-foreground/10 pt-6 flex flex-col gap-3 text-center text-xs text-primary-foreground/50 md:flex-row md:justify-between">
+          <span>© 2026 Stelle Motions. All rights reserved.</span>
+
+          <span>Developed by Stephen Pelagio</span>
         </div>
       </div>
-      <div className="flex text-primary-foreground font-serif flex-row max-w-6xl w-full justify-between">
-        <div className="p-4 justify-self-start">
-          <MenuList textSize="text-3xl" />
-        </div>
-        <div className="flex w-full justify-end items-center p-4 text-right">
-          <span>
-            Specializing in timeless, editorial-inspired portraiture & intimate
-            celebrations
-          </span>
-        </div>
-      </div>
-      <div className="flex w-full max-w-6xl px-6 justify-between md:flex-row flex-col text-center my-4 text-primary-foreground/50 gap-2 font-light">
-        <span className="text-sm">
-          © 2026 Stelle Motions. All rights reserved.
-        </span>
-        <span className="text-xs">Developed by: Stephen Pelagio</span>
-      </div>
-    </section>
+    </footer>
   );
 };
+
 export default Footer;
