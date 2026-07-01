@@ -1,5 +1,5 @@
+import MenuList from "@/app/(landing)/_common/menu-list";
 import React from "react";
-import MenuList from "./menu-list";
 
 const Footer = () => {
   return (

@@ -2,9 +2,9 @@
 import { useNavbar } from "@/hooks/store/navbar";
 import { cn } from "@/lib/utils";
 import React from "react";
-import ExploreMenuButton from "./explore-menu-button";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import ExploreMenuButton from "@/app/(landing)/_common/explore-menu-button";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();

@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "./_common/navbar";
 import Menu from "./_common/menu";
-import Footer from "./_common/footer";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 type LandingLayoutProps = {
   children: React.ReactNode;
