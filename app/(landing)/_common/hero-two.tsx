@@ -19,7 +19,6 @@ const HeroTwo: React.FC<HeroTwoProps> = ({ image, title }) => {
       <div className="absolute inset-0 z-10 flex flex-col">
         <div className="flex flex-col w-full text-xl md:text-normal h-full text-center align-middle justify-center gap-8 items-center font-bold tracking-widest uppercase">
           {title}
-          <div>IDK YET====================</div>
         </div>
       </div>
     </section>

@@ -6,17 +6,17 @@ const quickLinks = [
   {
     title: "Portfolio",
     description: "View our gallery",
-    href: "#",
+    href: "/portfolio",
   },
   {
     title: "Services",
     description: "Wedding & portrait experience",
-    href: "#",
+    href: "/services",
   },
   {
     title: "Inquire",
     description: "Let's create something beautiful",
-    href: "#",
+    href: "/inquire",
   },
 ];
 

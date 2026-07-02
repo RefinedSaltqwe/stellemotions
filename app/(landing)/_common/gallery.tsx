@@ -22,7 +22,7 @@ const images = [
 const Gallery: React.FC = () => {
   return (
     <section className="bg-background py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="mx-auto max-w-7xl px-4 lg:px-12">
         <div className="mb-20 max-w-xl">
           <p className="font-serif italic text-primary/70">
             Featured Galleries
