@@ -1,14 +1,21 @@
 import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 type HeroTwoProps = {
   image: string;
   title: string;
+  className?: string;
 };
 
-const HeroTwo: React.FC<HeroTwoProps> = ({ image, title }) => {
+const HeroTwo: React.FC<HeroTwoProps> = ({ image, title, className = "" }) => {
   return (
-    <section className="relative h-screen overflow-hidden text-primary-foreground">
+    <section
+      className={cn(
+        "relative overflow-hidden text-primary-foreground",
+        className,
+      )}
+    >
       {/* Background Image */}
       <Image src={image} alt="Hero" fill priority className="object-cover" />
 

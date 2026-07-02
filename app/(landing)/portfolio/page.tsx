@@ -9,6 +9,7 @@ const PortfolioPage: React.FC = () => {
       <HeroTwo
         image="/assets/images/stellemotions-hero.jpg"
         title="Portfolio"
+        className="h-screen"
       />
       <Gallery />
       <CtaInquireOne />

@@ -13,7 +13,7 @@ export default function GalleryGrid({ images }: Props) {
 
   return (
     <>
-      <div className="columns-2 lg:columns-3 gap-4 space-y-4">
+      <div className="columns-2 lg:columns-3 gap-4">
         {images.map((image, index) => (
           <button
             key={`${image}-${index}`}
