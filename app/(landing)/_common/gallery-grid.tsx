@@ -13,13 +13,13 @@ export default function GalleryGrid({ images }: Props) {
 
   return (
     <>
-      <div className="columns-2 lg:columns-3 gap-8 space-y-8">
+      <div className="columns-2 lg:columns-3 gap-4 space-y-4">
         {images.map((image, index) => (
           <button
             key={`${image}-${index}`}
             type="button"
             onClick={() => setSelectedIndex(index)}
-            className="relative mb-8 block w-full cursor-pointer overflow-hidden break-inside-avoid"
+            className="relative mb-4 block w-full cursor-pointer overflow-hidden break-inside-avoid"
           >
             <Image
               src={image}
