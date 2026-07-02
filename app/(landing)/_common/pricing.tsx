@@ -8,8 +8,10 @@ type PricingProps = {
   description: string;
   list: string;
   position: string;
+  imagePosition?: string;
   spacing?: string;
   image?: string;
+  price: string;
 };
 
 const Pricing: React.FC<PricingProps> = ({
@@ -19,6 +21,8 @@ const Pricing: React.FC<PricingProps> = ({
   position = "flex-col-reverse md:flex-row",
   spacing = "md:py-0",
   image = "/assets/images/stellemotions-hero.jpg",
+  price,
+  imagePosition = "-translate-y-36 md:-translate-y-20",
 }) => {
   return (
     <section
@@ -44,7 +48,7 @@ const Pricing: React.FC<PricingProps> = ({
               </li>
             ))}
           </ul>
-          <span className="text-xs">Starting at $1,000</span>
+          <span className="text-xs">Starting at ${price}</span>
           <div className="gap-4">
             <Button variant="default">Inquire Now</Button>
           </div>
@@ -56,7 +60,7 @@ const Pricing: React.FC<PricingProps> = ({
             width={400}
             height={800}
             loading="lazy"
-            className="object-cover -translate-y-36 md:-translate-y-20"
+            className={cn("object-cover", imagePosition)}
           />
         </div>
       </div>

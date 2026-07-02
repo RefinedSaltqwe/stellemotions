@@ -18,14 +18,17 @@ const ServicesPage: React.FC = () => {
         description="Hope grows golden find eye except darling loved hour else cool change. Breeze yours dim work wood, whisper breast air terribly spirit. Wave strength better wandering walls walking toward season woo times."
         position="flex-col-reverse md:flex-row"
         image="/assets/images/couple-2.jpg"
+        price="1,000"
       />
       <Pricing
         title="Elopements + Intimate Weddings"
         list="Engagement Session, Elopement Guide, 6 hours of wedding coverage, Antonio + Etta, Online Gallery, Organic Photo Album"
         description="Hope grows golden find eye except darling loved hour else cool change. Breeze yours dim work wood, whisper breast air terribly spirit. Wave strength better wandering walls walking toward season woo times."
         position="flex-col-reverse md:flex-row-reverse"
-        spacing="pt-36"
+        spacing="pt-36 md:pt-0"
+        imagePosition="-translate-y-36 md:-translate-y-0"
         image="/assets/images/couple-4.jpg"
+        price="1,200"
       />
       <Pricing
         title="Elopements + Intimate Weddings"
@@ -34,6 +37,7 @@ const ServicesPage: React.FC = () => {
         position="flex-col-reverse md:flex-row"
         spacing="pt-36"
         image="/assets/images/couple-2.jpg"
+        price="1,500"
       />
     </>
   );
