@@ -27,7 +27,7 @@ const Pricing: React.FC<PricingProps> = ({
   return (
     <section
       className={cn(
-        "bg-secondary flex justify-center text-secondary-foreground pb-0 pt-20 px-20",
+        "bg-secondary flex justify-center text-secondary-foreground pb-0 pt-20 px-8",
         spacing,
       )}
     >

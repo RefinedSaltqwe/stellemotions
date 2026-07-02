@@ -10,7 +10,7 @@ const CtaInquireOne: React.FC<CtaInquireOneProps> = ({
   title = "Let's create some memories truly meaningful and wonderfully you",
 }) => {
   return (
-    <section className="bg-accent flex justify-center text-accent-foreground pb-0 pt-20 md:py-0 px-20">
+    <section className="bg-accent flex justify-center text-accent-foreground pb-0 pt-20 md:py-0 px-8">
       <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl">
         <div className="w-full flex flex-col md:pr-10 gap-8 -translate-y-20 md:translate-0">
           <h6 className="uppercase tracking-wider font-light text-sm">
