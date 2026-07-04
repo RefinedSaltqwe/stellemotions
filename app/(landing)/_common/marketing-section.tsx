@@ -43,10 +43,10 @@ const MarketingSection: React.FC = () => {
               <span className="font-semibold uppercase">
                 We Are Stelle Motions,
               </span>{" "}
-              a husband-and-wife photography team based in Regina, Saskatchewan.
-              We specialize in capturing authentic portraits, heartfelt
-              weddings, and meaningful moments with a timeless and cinematic
-              approach.
+              {`a husband-and-wife photography team based
+              in Regina, Saskatchewan. We capture genuine moments, meaningful
+              connections, and life's most memorable milestones through soft,
+              cinematic imagery that feels timeless and true.`}
             </p>
           </div>
 

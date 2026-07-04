@@ -9,7 +9,6 @@ type MenuListProps = {
 
 const menuList = [
   { name: "Home", link: "/" },
-  { name: "About", link: "/about" },
   { name: "Portfolio", link: "/portfolio" },
   { name: "Services", link: "/services" },
   { name: "Inquire", link: "/inquire" },

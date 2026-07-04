@@ -23,13 +23,11 @@ const Gallery: React.FC = () => {
   return (
     <section className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-12">
-        <div className="mb-20 max-w-xl">
-          <p className="font-serif italic text-primary/70">
-            Featured Galleries
-          </p>
+        <div className="mb-20 max-w-2xl">
+          <p className="font-serif italic text-primary/70">{`Stelle Motions'`}</p>
 
           <h2 className="mt-4 font-serif text-5xl lg:text-7xl leading-none text-primary">
-            Love Stories
+            Stellar Snaps
           </h2>
         </div>
 

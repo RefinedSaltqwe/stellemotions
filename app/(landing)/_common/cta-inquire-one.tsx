@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type CtaInquireOneProps = {
@@ -26,7 +27,9 @@ const CtaInquireOne: React.FC<CtaInquireOneProps> = ({
             woo times.
           </p>
           <div className="gap-4">
-            <Button variant="secondary">Inquire Now</Button>
+            <Button asChild>
+              <Link href="/services">See Pricing</Link>
+            </Button>
           </div>
         </div>
         <div className="w-full align-middle justify-center flex">

@@ -48,7 +48,7 @@ const Pricing: React.FC<PricingProps> = ({
               </li>
             ))}
           </ul>
-          <span className="text-xs">Starting at ${price}</span>
+          <span className="text-xs">{price}</span>
           <div className="gap-4">
             <Button variant="default">Inquire Now</Button>
           </div>
