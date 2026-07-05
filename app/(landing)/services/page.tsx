@@ -21,7 +21,7 @@ const ServicesPage: React.FC = () => {
         list={`Up to 12 Hours of Wedding Day Coverage, 400–500 Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Downloads, Personalized Wedding Timeline Planning, Final Gallery Delivered Within 6–8 Weeks, Travel & Accommodation Fees Apply for Destination Weddings`}
         description={`From the quiet moments before "I do" to the celebration on the dance floor, this collection is designed to preserve your entire wedding story with care and intention.`}
         position="flex-col-reverse md:flex-row"
-        spacing="md:pt-5"
+        spacing="md:pt-10"
         image="/assets/images/couple-2.jpg"
         price="Starting at $2,500"
       />
@@ -40,7 +40,7 @@ const ServicesPage: React.FC = () => {
         list={`Up to 2 Hours of Session Coverage, 50–100 Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Unlimited Downloads, Outfit & Location Consultation, Final Gallery Delivered Within 2–3 Weeks, Travel Fees May Apply for Locations Outside the Local Area`}
         description="Whether you're celebrating a milestone or simply preserving this season of life, these sessions are designed to capture genuine connection and authentic moments through soft, cinematic imagery. Perfect for couples, families, graduates, creatives, and personal brands."
         position="flex-col-reverse md:flex-row"
-        spacing="pt-36 md:pb-5 md:pt-50"
+        spacing="pt-36 md:pb-10 md:pt-50"
         image="/assets/images/couple-2.jpg"
         price="Starting at $250"
       />

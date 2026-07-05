@@ -13,8 +13,11 @@ export default function FAQSection() {
   return (
     <section className="bg-background py-24">
       <div className="container mx-auto max-w-7xl px-6">
-        <h2 className="font-serif text-5xl leading-tight md:text-7xl">
+        <h2 className="mt-5 font-serif tracking-tight text-foreground text-7xl hidden md:block">
           Frequently Asked Questions
+        </h2>
+        <h2 className="mt-5 font-serif tracking-tight text-foreground text-7xl block md:hidden">
+          FAQs
         </h2>
 
         <Accordion type="single" collapsible className="mt-16 w-full">

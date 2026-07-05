@@ -24,10 +24,10 @@ const Gallery: React.FC = () => {
     <section className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-12">
         <div className="mb-20 max-w-2xl">
-          <p className="font-serif italic text-primary/70">{`Stelle Motions'`}</p>
+          <p className="font-serif italic text-primary/70">{`Gallery`}</p>
 
           <h2 className="mt-4 font-serif text-5xl lg:text-7xl leading-none text-primary">
-            Stellar Snaps
+            Stelle Snaps
           </h2>
         </div>
 

@@ -38,19 +38,16 @@ export default function Slide({ slide }: Props) {
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-6">
-        <div className="mx-auto max-w-4xl text-center text-white">
-          {/* Eyebrow */}
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.35em] md:text-sm">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.35em] text-muted">
             {slide.eyebrow}
           </p>
 
-          {/* Heading */}
-          <h2 className="font-serif text-5xl leading-tight md:text-7xl">
+          <h2 className="mt-5 font-serif text-5xl tracking-tight text-muted lg:text-7xl">
             {slide.title}
           </h2>
 
-          {/* Description */}
-          <p className="mx-auto mt-10 max-w-2xl text-base leading-8 text-white/85 md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-muted">
             {slide.description}
           </p>
         </div>
