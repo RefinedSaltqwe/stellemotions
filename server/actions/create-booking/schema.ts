@@ -1,4 +1,4 @@
-import { Service } from "@prisma/client";
+import { SERVICES } from "@/constants/services";
 import { z } from "zod";
 
 export const inquirySchema = z.object({
@@ -16,7 +16,7 @@ export const inquirySchema = z.object({
 
   location: z.string().trim().min(2, "Location is required."),
 
-  service: z.enum(Service),
+  service: z.enum(SERVICES),
 
   date: z.date().nullable(),
 
