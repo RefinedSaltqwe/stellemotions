@@ -5,7 +5,7 @@ import { inquirySchema, type InquirySchema } from "./schema";
 import z from "zod";
 import { revalidatePath } from "next/cache";
 
-export async function createBooking(data: InquirySchema) {
+export async function upsertBooking(data: InquirySchema) {
   const parsed = inquirySchema.safeParse(data);
 
   if (!parsed.success) {
@@ -27,6 +27,7 @@ export async function createBooking(data: InquirySchema) {
         phone: parsed.data.phone || null,
         location: parsed.data.location,
         service: parsed.data.service,
+        status: parsed.data.status,
         date: parsed.data.date,
         message: parsed.data.message,
         updatedAt: new Date(),
@@ -38,16 +39,19 @@ export async function createBooking(data: InquirySchema) {
         phone: parsed.data.phone || null,
         location: parsed.data.location,
         service: parsed.data.service,
+        status: parsed.data.status,
         date: parsed.data.date,
         message: parsed.data.message,
       },
     });
-    revalidatePath("/dashboard/bookings");
+    revalidatePath("/dashboard/bookings", "page");
 
     return {
       success: true,
       data: booking,
-      message: "Booking created successfully ",
+      message: data.id
+        ? "Booking updated successfully "
+        : "Booking created successfully",
     };
   } catch (error) {
     console.error(error);

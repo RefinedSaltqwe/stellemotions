@@ -1,14 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-
-import { Booking } from "@/types";
-
 import { EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import { format } from "date-fns";
 import { BookingStatusBadge } from "./booking-status-badge";
 import UpsertBookingDialog from "./upsert-booking-dialog";
 import { Button } from "@/components/ui/button";
+import { Booking } from "@/server/actions/create-booking/types";
 
 function formatService(service: string) {
   return service
@@ -55,23 +53,32 @@ export const columns: ColumnDef<Booking>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => (
-      <div className="flex w-full gap-2 m-0 justify-center align-middle">
-        <Button variant={"ghost"} size={"icon"}>
-          <EyeIcon size={16} />
-        </Button>
-        <UpsertBookingDialog
-          buttonVariant={"ghost"}
-          className=""
-          size={"icon"}
-          booking={row.original}
-        >
-          <PencilSimpleIcon size={16} />
-        </UpsertBookingDialog>
-        <Button variant={"destructive"} size={"icon"}>
-          <TrashIcon size={16} />
-        </Button>
-      </div>
-    ),
+    cell: ({ row }) => {
+      return (
+        <div className="flex w-full gap-2 m-0 justify-center align-middle">
+          <Button
+            variant={"ghost"}
+            size={"icon"}
+            onClick={() => console.log(row.original)}
+          >
+            <EyeIcon size={16} />
+          </Button>
+          <UpsertBookingDialog
+            key={row.original.id}
+            title="Update Booking"
+            description="Edit booking"
+            buttonVariant={"ghost"}
+            className=""
+            size={"icon"}
+            booking={row.original}
+          >
+            <PencilSimpleIcon size={16} />
+          </UpsertBookingDialog>
+          <Button variant={"destructive"} size={"icon"}>
+            <TrashIcon size={16} />
+          </Button>
+        </div>
+      );
+    },
   },
 ];

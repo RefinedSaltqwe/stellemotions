@@ -43,7 +43,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { useMutation } from "@tanstack/react-query";
-import { createBooking } from "@/server/actions/create-booking";
+import { upsertBooking } from "@/server/actions/create-booking";
 import { Spinner } from "../ui/spinner";
 
 const InquiryForm: React.FC = () => {
@@ -62,7 +62,7 @@ const InquiryForm: React.FC = () => {
   });
 
   const { mutate: mutateData, isPending } = useMutation({
-    mutationFn: createBooking,
+    mutationFn: upsertBooking,
 
     onSuccess: () => {
       toast.success("Inquiry sent successfully.");

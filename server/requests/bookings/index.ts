@@ -7,7 +7,7 @@ export const getAllBookings = cache(async () => {
   try {
     const response = await db.booking.findMany({
       orderBy: {
-        createdAt: "desc",
+        date: "asc",
       },
     });
 

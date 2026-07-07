@@ -45,19 +45,22 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { SERVICES } from "@/constants/services";
 import { cn } from "@/lib/utils";
-import { createBooking } from "@/server/actions/create-booking";
+import { upsertBooking } from "@/server/actions/create-booking";
 import {
   inquirySchema,
   InquirySchema,
 } from "@/server/actions/create-booking/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Booking } from "@/types";
+import { Booking } from "@/server/actions/create-booking/types";
+import { STATUS } from "@/constants/status";
 
 type UpsertBookingDialogProps = {
+  title: string;
+  description: string;
   booking?: Booking;
   className: string;
   children: React.ReactNode;
@@ -89,9 +92,11 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
   children,
   buttonVariant,
   size,
+  title,
+  description,
 }) => {
   const [open, setOpen] = useState(false);
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
   const form = useForm<InquirySchema>({
     resolver: zodResolver(inquirySchema),
     defaultValues: {
@@ -102,24 +107,28 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
       phone: booking?.phone ?? "",
       location: booking?.location ?? "",
       service: booking?.service ?? SERVICES.WEDDING,
+      status: booking?.status ?? STATUS.PENDING,
       date: booking?.date ?? null,
       message: booking?.message ?? "",
     },
   });
 
   const { mutate: mutateData, isPending } = useMutation({
-    mutationFn: createBooking,
+    mutationFn: upsertBooking,
     onSuccess: async (data) => {
-      // await queryClient.invalidateQueries({
-      //   queryKey: ["images"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["bookings"],
+      });
+      await queryClient.invalidateQueries({
+        queryKey: ["bookings-stats"],
+      });
       toast.success(`${data.message} for ${data.data?.firstName}`);
     },
     onError: () => {
       toast.error("Something went wrong.");
     },
     onSettled: () => {
-      form.reset();
+      if (!booking) form.reset();
     },
   });
 
@@ -137,9 +146,9 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
 
       <DialogContent className="flex max-h-[90dvh] flex-col sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Create Booking</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
 
-          <DialogDescription>Add a new booking manually.</DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-5 py-4 overflow-y-auto px-1">
@@ -260,7 +269,7 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
                 />
               </div>
 
-              {/* Service + Date */}
+              {/* Service + Status */}
 
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Service */}
@@ -315,6 +324,48 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
                   )}
                 />
 
+                {/* Status */}
+                <Controller
+                  name="status"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel>Status</FieldLabel>
+
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <SelectTrigger aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select a status" />
+                        </SelectTrigger>
+
+                        <SelectContent>
+                          <SelectItem value={STATUS.PENDING}>
+                            Pending
+                          </SelectItem>
+                          <SelectItem value={STATUS.CONFIRMED}>
+                            Confirmed
+                          </SelectItem>
+                          <SelectItem value={STATUS.COMPLETED}>
+                            Completed
+                          </SelectItem>
+                          <SelectItem value={STATUS.CANCELLED}>
+                            Cancelled
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
+                  )}
+                />
+              </div>
+
+              {/* Date + Some*/}
+              <div className="grid gap-6 md:grid-cols-2">
                 {/* Date */}
                 <Controller
                   name="date"
@@ -356,6 +407,7 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
                     </Field>
                   )}
                 />
+                {/* Some */}
               </div>
 
               {/* Location */}
@@ -422,7 +474,7 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
                 form="booking-inquiry-form"
                 disabled={isPending}
               >
-                {isPending ? <Spinner /> : "Create Booking"}
+                {isPending ? <Spinner /> : title}
               </Button>
             </DialogFooter>
           </form>

@@ -1,26 +1,25 @@
 import { getAllBookings, getBookingStats } from "@/server/requests/bookings";
-import { BookingTable } from "./_components/booking-table";
-import { BookingToolbar } from "./_components/booking-toolbar";
-import { EmptyState } from "./_components/empty-state";
-import BookingStats from "./_components/booking.stats";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import BookingClient from "./_components/booking-client";
 
 const BookingsPage: React.FC = async () => {
-  const [bookings, stats] = await Promise.all([
-    getAllBookings(),
-    getBookingStats(),
-  ]);
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["bookings"],
+    queryFn: () => getAllBookings(),
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ["bookings-stats"],
+    queryFn: () => getBookingStats(),
+  });
   return (
-    <div className="space-y-6 px-4 lg:px-6">
-      <BookingStats total={stats.total} pending={stats.pending} />
-
-      <BookingToolbar />
-
-      {bookings.data.length === 0 ? (
-        <EmptyState />
-      ) : (
-        <BookingTable data={bookings.data} />
-      )}
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <BookingClient />
+    </HydrationBoundary>
   );
 };
 

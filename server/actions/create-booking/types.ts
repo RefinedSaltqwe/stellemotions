@@ -1,11 +1,16 @@
-// import { type ActionState } from "@/lib/create-safe-actions";
-// import { type z } from "zod";
-// import { type CreateNewsletterSchema } from "./schema";
+import { BookingStatus, Service } from "@/prisma/generated/client";
 
-// type News = {
-//   emailSent: boolean;
-//   created: boolean;
-// };
-
-// export type InputType = z.infer<typeof CreateNewsletterSchema>;
-// export type ReturnType = ActionState<InputType, News>;
+export interface Booking {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string | null;
+  location: string;
+  service: Service;
+  date: Date | null;
+  message: string | null;
+  status: BookingStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}

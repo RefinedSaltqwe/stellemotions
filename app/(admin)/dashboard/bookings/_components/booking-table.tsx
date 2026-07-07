@@ -27,6 +27,7 @@ export function BookingTable({ data }: Props) {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getRowId: (row) => row.id,
   });
 
   return (

@@ -17,7 +17,12 @@ export function BookingToolbar() {
         <Input className="pl-9" placeholder="Search bookings..." />
       </div>
 
-      <UpsertBookingDialog buttonVariant={"default"} className="">
+      <UpsertBookingDialog
+        title="Create Booking"
+        description="Add a new booking manually."
+        buttonVariant={"default"}
+        className=""
+      >
         <PlusIcon size={16} weight="bold" />
         New Booking
       </UpsertBookingDialog>

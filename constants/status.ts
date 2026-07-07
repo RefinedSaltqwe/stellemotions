@@ -1,0 +1,8 @@
+export enum STATUS {
+  PENDING = "PENDING",
+  CONFIRMED = "CONFIRMED",
+  COMPLETED = "COMPLETED",
+  CANCELLED = "CANCELLED",
+}
+
+export type Service = STATUS;
