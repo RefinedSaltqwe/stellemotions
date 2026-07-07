@@ -246,6 +246,9 @@ const InquiryForm: React.FC = () => {
                         <SelectItem value={SERVICES.GRADUATION}>
                           Graduation
                         </SelectItem>
+                        <SelectItem value={SERVICES.LIFESTYLE}>
+                          Lifestyle
+                        </SelectItem>
                         <SelectItem value={SERVICES.PORTRAIT}>
                           Portraits
                         </SelectItem>

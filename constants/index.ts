@@ -1,5 +1,5 @@
 import { StorySlide } from "@/types";
-import { Service } from "@prisma/client";
+import { SERVICES } from "./services";
 
 export const slides: StorySlide[] = [
   {
@@ -129,38 +129,38 @@ export const collections = [
 export const services = [
   {
     label: "Wedding",
-    value: Service.WEDDING,
+    value: SERVICES.WEDDING,
   },
   {
     label: "Engagement",
-    value: Service.ENGAGEMENT,
+    value: SERVICES.ENGAGEMENT,
   },
   {
     label: "Couples",
-    value: Service.COUPLE,
+    value: SERVICES.COUPLE,
   },
   {
     label: "Lifestyle",
-    value: Service.LIFESTYLE,
+    value: SERVICES.LIFESTYLE,
   },
   {
     label: "Family",
-    value: Service.FAMILY,
+    value: SERVICES.FAMILY,
   },
   {
     label: "Maternity",
-    value: Service.MATERNITY,
+    value: SERVICES.MATERNITY,
   },
   {
     label: "Portrait",
-    value: Service.PORTRAIT,
+    value: SERVICES.PORTRAIT,
   },
   {
     label: "Graduation",
-    value: Service.GRADUATION,
+    value: SERVICES.GRADUATION,
   },
   {
     label: "Event",
-    value: Service.EVENT,
+    value: SERVICES.EVENT,
   },
 ] as const;
