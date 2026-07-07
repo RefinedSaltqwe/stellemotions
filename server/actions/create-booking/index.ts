@@ -1,53 +1,45 @@
-// "use server";
-// import { createSafeAction } from "@/lib/create-safe-actions";
-// import { db } from "@/server/db";
-// import { revalidatePath } from "next/cache";
-// import { CreateNewsletterSchema } from "./schema";
-// import { type InputType, type ReturnType } from "./types";
-// import { sendEmail } from "@/lib/sendEmail";
+"use server";
 
-// const handler = async (data: InputType): Promise<ReturnType> => {
-//   const { email } = data;
+import { db } from "@/server/db";
+import { inquirySchema, type InquirySchema } from "./schema";
+import z from "zod";
 
-//   try {
-//     // Check if email already exists
-//     const existingEMail = await db.newsLetter.findUnique({ where: { email } });
+export async function createBooking(data: InquirySchema) {
+  const parsed = inquirySchema.safeParse(data);
 
-//     if (existingEMail) {
-//       return { error: "Email already exists." };
-//     }
+  if (!parsed.success) {
+    const errors = z.flattenError(parsed.error);
 
-//     // Create new user
-//     const newSubscriber = await db.newsLetter.create({
-//       data: {
-//         email,
-//       },
-//     });
+    return {
+      success: false,
+      errors: errors.fieldErrors,
+    };
+  }
 
-//     if (!newSubscriber) {
-//       return { data: { emailSent: false, created: false } };
-//     }
+  try {
+    const booking = await db.booking.create({
+      data: {
+        firstName: parsed.data.firstName,
+        lastName: parsed.data.lastName,
+        email: parsed.data.email,
+        phone: parsed.data.phone || null,
+        location: parsed.data.location,
+        service: parsed.data.service,
+        date: parsed.data.date,
+        message: parsed.data.message,
+      },
+    });
 
-//     const emailSent = await sendEmail(
-//       "newsletter",
-//       email,
-//       "Guest",
-//       undefined,
-//       undefined,
-//     );
-//     if (!emailSent) {
-//       return { data: { emailSent: emailSent, created: true } };
-//     }
+    return {
+      success: true,
+      booking,
+    };
+  } catch (error) {
+    console.error(error);
 
-//     revalidatePath("/shop", "page");
-//     return { data: { emailSent: emailSent, created: true } };
-//   } catch (error) {
-//     console.error("Newsletter creation error:", error);
-//     return { error: error instanceof Error ? error.message : "Unknown error" };
-//   }
-// };
-
-// export const createNewsletter = createSafeAction(
-//   CreateNewsletterSchema,
-//   handler,
-// );
+    return {
+      success: false,
+      message: "Something went wrong. Please try again.",
+    };
+  }
+}

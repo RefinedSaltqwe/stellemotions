@@ -3,13 +3,12 @@
 
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
-  
+}
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
 }
 
 // Contract inferred from the live database schema. Edit as needed, then run `prisma-next contract emit`.

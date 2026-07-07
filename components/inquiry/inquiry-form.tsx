@@ -1,11 +1,10 @@
 "use client";
 
-import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import * as React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import * as z from "zod";
-import { format } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -30,20 +29,26 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
-import { inquirySchema } from "@/server/actions/create-booking/schema";
+import { SERVICES } from "@/constants/services";
+import {
+  InquirySchema,
+  inquirySchema,
+} from "@/server/actions/create-booking/schema";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "../ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Calendar } from "../ui/calendar";
-import { SERVICES } from "@/constants/services";
+import { useMutation } from "@tanstack/react-query";
+import { createBooking } from "@/server/actions/create-booking";
+import { Spinner } from "../ui/spinner";
 
 const InquiryForm: React.FC = () => {
-  const form = useForm<z.infer<typeof inquirySchema>>({
+  const form = useForm<InquirySchema>({
     resolver: zodResolver(inquirySchema),
     defaultValues: {
       firstName: "",
@@ -57,22 +62,26 @@ const InquiryForm: React.FC = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof inquirySchema>) {
+  const { mutate: mutateData, isPending } = useMutation({
+    mutationFn: createBooking,
+
+    onSuccess: () => {
+      toast.success("Inquiry sent successfully.");
+      console.log("Inquiry sent successfully.");
+      form.reset();
+    },
+
+    onError: () => {
+      toast.error("Something went wrong.");
+    },
+    onSettled: () => {
+      console.log("settled");
+    },
+  });
+
+  function onSubmit(data: InquirySchema) {
     console.log(data);
-    toast("You submitted the following values:", {
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
+    mutateData(data);
   }
 
   return (
@@ -354,8 +363,8 @@ const InquiryForm: React.FC = () => {
           Reset
         </Button>
 
-        <Button type="submit" form="booking-inquiry-form">
-          Send Inquiry
+        <Button type="submit" form="booking-inquiry-form" disabled={isPending}>
+          {isPending ? <Spinner /> : "Send Inquiry"}
         </Button>
       </CardFooter>
     </Card>
