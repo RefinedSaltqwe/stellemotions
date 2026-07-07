@@ -31,7 +31,6 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group";
 import { inquirySchema } from "@/server/actions/create-booking/schema";
-import { Service } from "@prisma/client";
 import {
   Select,
   SelectTrigger,
@@ -41,6 +40,7 @@ import {
 } from "../ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Calendar } from "../ui/calendar";
+import { SERVICES } from "@/constants/services";
 
 const InquiryForm: React.FC = () => {
   const form = useForm<z.infer<typeof inquirySchema>>({
@@ -51,7 +51,7 @@ const InquiryForm: React.FC = () => {
       email: "",
       phone: "",
       location: "",
-      service: Service.WEDDING,
+      service: SERVICES.WEDDING,
       date: null,
       message: "",
     },
@@ -223,22 +223,24 @@ const InquiryForm: React.FC = () => {
                       </SelectTrigger>
 
                       <SelectContent>
-                        <SelectItem value={Service.WEDDING}>Wedding</SelectItem>
-                        <SelectItem value={Service.ENGAGEMENT}>
+                        <SelectItem value={SERVICES.WEDDING}>
+                          Wedding
+                        </SelectItem>
+                        <SelectItem value={SERVICES.ENGAGEMENT}>
                           Engagement
                         </SelectItem>
-                        <SelectItem value={Service.COUPLE}>Couples</SelectItem>
-                        <SelectItem value={Service.FAMILY}>Family</SelectItem>
-                        <SelectItem value={Service.MATERNITY}>
+                        <SelectItem value={SERVICES.COUPLE}>Couple</SelectItem>
+                        <SelectItem value={SERVICES.FAMILY}>Family</SelectItem>
+                        <SelectItem value={SERVICES.MATERNITY}>
                           Maternity
                         </SelectItem>
-                        <SelectItem value={Service.GRADUATION}>
+                        <SelectItem value={SERVICES.GRADUATION}>
                           Graduation
                         </SelectItem>
-                        <SelectItem value={Service.PORTRAIT}>
+                        <SelectItem value={SERVICES.PORTRAIT}>
                           Portraits
                         </SelectItem>
-                        <SelectItem value={Service.EVENT}>Events</SelectItem>
+                        <SelectItem value={SERVICES.EVENT}>Events</SelectItem>
                       </SelectContent>
                     </Select>
 

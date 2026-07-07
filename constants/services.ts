@@ -1,0 +1,12 @@
+export enum SERVICES {
+  WEDDING = "WEDDING",
+  ENGAGEMENT = "ENGAGEMENT",
+  COUPLE = "COUPLE",
+  FAMILY = "FAMILY",
+  MATERNITY = "MATERNITY",
+  GRADUATION = "GRADUATION",
+  PORTRAIT = "PORTRAIT",
+  EVENT = "EVENT",
+}
+
+export type Service = typeof SERVICES;
