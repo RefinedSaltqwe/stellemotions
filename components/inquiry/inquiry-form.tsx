@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import * as React from "react";
@@ -68,19 +67,17 @@ const InquiryForm: React.FC = () => {
     onSuccess: () => {
       toast.success("Inquiry sent successfully.");
       console.log("Inquiry sent successfully.");
-      form.reset();
     },
 
     onError: () => {
       toast.error("Something went wrong.");
     },
     onSettled: () => {
-      console.log("settled");
+      form.reset();
     },
   });
 
   function onSubmit(data: InquirySchema) {
-    console.log(data);
     mutateData(data);
   }
 

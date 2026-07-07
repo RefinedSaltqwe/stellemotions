@@ -10,4 +10,4 @@ export enum SERVICES {
   EVENT = "EVENT",
 }
 
-export type Service = typeof SERVICES;
+export type Service = SERVICES;

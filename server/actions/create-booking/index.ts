@@ -3,6 +3,7 @@
 import { db } from "@/server/db";
 import { inquirySchema, type InquirySchema } from "./schema";
 import z from "zod";
+import { revalidatePath } from "next/cache";
 
 export async function createBooking(data: InquirySchema) {
   const parsed = inquirySchema.safeParse(data);
@@ -17,8 +18,20 @@ export async function createBooking(data: InquirySchema) {
   }
 
   try {
-    const booking = await db.booking.create({
-      data: {
+    const booking = await db.booking.upsert({
+      where: data.id ? { id: data.id } : { id: "00000-XXX-X-0" },
+      update: {
+        firstName: parsed.data.firstName,
+        lastName: parsed.data.lastName,
+        email: parsed.data.email,
+        phone: parsed.data.phone || null,
+        location: parsed.data.location,
+        service: parsed.data.service,
+        date: parsed.data.date,
+        message: parsed.data.message,
+        updatedAt: new Date(),
+      },
+      create: {
         firstName: parsed.data.firstName,
         lastName: parsed.data.lastName,
         email: parsed.data.email,
@@ -29,16 +42,19 @@ export async function createBooking(data: InquirySchema) {
         message: parsed.data.message,
       },
     });
+    revalidatePath("/dashboard/bookings");
 
     return {
       success: true,
-      booking,
+      data: booking,
+      message: "Booking created successfully ",
     };
   } catch (error) {
     console.error(error);
 
     return {
       success: false,
+      data: undefined,
       message: "Something went wrong. Please try again.",
     };
   }

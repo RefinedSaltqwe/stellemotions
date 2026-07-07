@@ -98,31 +98,31 @@ export const collections = [
     title: "Bride + Groom",
     description: "Wedding",
     image: "/assets/images/couple-1.jpg",
-    link: "#",
+    link: "/portfolio/collection/12124123252",
   },
   {
     title: "Bride + Groom",
     description: "Wedding",
     image: "/assets/images/couple-2.jpg",
-    link: "#",
+    link: "/portfolio/collection/12124123252",
   },
   {
     title: "Bride + Groom",
     description: "Couple",
     image: "/assets/images/couple-3.jpg",
-    link: "#",
+    link: "/portfolio/collection/12124123252",
   },
   {
     title: "Bride + Groom",
     description: "Lifestyle",
     image: "/assets/images/couple-4.jpg",
-    link: "#",
+    link: "/portfolio/collection/12124123252",
   },
   {
     title: "Bride + Groom",
     description: "Wedding",
     image: "/assets/images/couple-5.jpg",
-    link: "#",
+    link: "/portfolio/collection/12124123252",
   },
 ];
 

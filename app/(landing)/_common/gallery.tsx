@@ -1,5 +1,9 @@
 import GalleryGrid from "./gallery-grid";
 
+type GalleryProps = {
+  id?: string;
+};
+
 const images = [
   "/assets/images/couple-3.jpg",
   "/assets/images/couple-4.jpg",
@@ -19,7 +23,7 @@ const images = [
   "/assets/images/couple-6.jpg",
 ];
 
-const Gallery: React.FC = () => {
+const Gallery: React.FC<GalleryProps> = ({ id }) => {
   return (
     <section className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-12">
