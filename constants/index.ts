@@ -1,4 +1,5 @@
 import { StorySlide } from "@/types";
+import { Service } from "@prisma/client";
 
 export const slides: StorySlide[] = [
   {
@@ -91,3 +92,75 @@ export const faqs = [
       "We recommend timeless, neutral-toned outfits that feel comfortable and authentic to you. After booking, we'll provide a styling guide with helpful tips to ensure your photos look natural and cohesive.",
   },
 ];
+
+export const collections = [
+  {
+    title: "Bride + Groom",
+    description: "Wedding",
+    image: "/assets/images/couple-1.jpg",
+    link: "#",
+  },
+  {
+    title: "Bride + Groom",
+    description: "Wedding",
+    image: "/assets/images/couple-2.jpg",
+    link: "#",
+  },
+  {
+    title: "Bride + Groom",
+    description: "Couple",
+    image: "/assets/images/couple-3.jpg",
+    link: "#",
+  },
+  {
+    title: "Bride + Groom",
+    description: "Lifestyle",
+    image: "/assets/images/couple-4.jpg",
+    link: "#",
+  },
+  {
+    title: "Bride + Groom",
+    description: "Wedding",
+    image: "/assets/images/couple-5.jpg",
+    link: "#",
+  },
+];
+
+export const services = [
+  {
+    label: "Wedding",
+    value: Service.WEDDING,
+  },
+  {
+    label: "Engagement",
+    value: Service.ENGAGEMENT,
+  },
+  {
+    label: "Couples",
+    value: Service.COUPLE,
+  },
+  {
+    label: "Lifestyle",
+    value: Service.LIFESTYLE,
+  },
+  {
+    label: "Family",
+    value: Service.FAMILY,
+  },
+  {
+    label: "Maternity",
+    value: Service.MATERNITY,
+  },
+  {
+    label: "Portrait",
+    value: Service.PORTRAIT,
+  },
+  {
+    label: "Graduation",
+    value: Service.GRADUATION,
+  },
+  {
+    label: "Event",
+    value: Service.EVENT,
+  },
+] as const;

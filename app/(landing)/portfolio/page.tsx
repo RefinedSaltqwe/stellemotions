@@ -2,6 +2,7 @@ import React from "react";
 import HeroTwo from "../_common/hero-two";
 import Gallery from "../_common/gallery";
 import CtaInquireOne from "../_common/cta-inquire-one";
+import Collection from "@/components/portfolio/collection";
 
 const PortfolioPage: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const PortfolioPage: React.FC = () => {
         title="Portfolio"
         className="h-screen"
       />
+      <Collection />
       <Gallery />
       <CtaInquireOne />
     </>

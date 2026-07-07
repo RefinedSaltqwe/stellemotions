@@ -5,6 +5,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import ExploreMenuButton from "@/app/(landing)/_common/explore-menu-button";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -27,14 +28,17 @@ const Navbar: React.FC = () => {
         <div className="px-6 py-2">
           <ExploreMenuButton />
         </div>
-        <div className="px-6 py-2">
-          <Button
-            variant={"ghost"}
-            className="uppercase tracking-[0.25em] text-xs text-primary-foreground flex flex-row gap-2 p-0 hover:bg-transparent hover:text-primary-foreground font-normal"
-          >
-            Inquire
-          </Button>
-        </div>
+        {!pathname.includes("inquire") && (
+          <div className="px-6 py-2">
+            <Button
+              asChild
+              variant={"ghost"}
+              className="uppercase tracking-[0.25em] text-xs text-primary-foreground flex flex-row gap-2 p-0 hover:bg-transparent hover:text-primary-foreground font-normal"
+            >
+              <Link href="/inquire">Inquire</Link>
+            </Button>
+          </div>
+        )}
       </div>
     </header>
   );

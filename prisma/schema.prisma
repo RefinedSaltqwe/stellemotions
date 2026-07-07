@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+// Contract inferred from the live database schema. Edit as needed, then run `prisma-next contract emit`.
+// use prisma-next
+
+model Admin {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  password  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+
+  location String
+
+  service   Service
+
+  date      DateTime?
+  message   String?  
+
+  status    BookingStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+
+  title       String
+
+  description String?   
+  heroImage   String
+
+  featured    Boolean   @default(false)
+
+  gallery     Gallery[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Gallery {
+  id           String      @id @default(cuid())
+
+  image        String
+
+  alt          String?
+  caption      String?
+
+  order        Int         @default(0)
+
+  collection   Collection  @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId String
+
+  featured     Boolean     @default(false)
+
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+enum Service {
+  WEDDING
+  ENGAGEMENT
+  COUPLE
+  LIFESTYLE
+  FAMILY
+  MATERNITY
+  PORTRAIT
+  GRADUATION
+  EVENT
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
