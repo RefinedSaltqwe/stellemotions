@@ -145,7 +145,10 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="flex max-h-[90dvh] flex-col sm:max-w-2xl">
+      <DialogContent
+        onInteractOutside={(e) => e.preventDefault()}
+        className="flex max-h-[90dvh] flex-col sm:max-w-2xl"
+      >
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
 

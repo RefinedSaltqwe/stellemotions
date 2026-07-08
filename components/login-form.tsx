@@ -45,8 +45,7 @@ export function LoginForm({
   const { mutate: mutateLoginUser, isPending } = useMutation({
     mutationFn: loginUser,
 
-    onSuccess: async (response) => {
-      console.log(response);
+    onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["me"],
       });

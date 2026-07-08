@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/button";
 type ErrorPageProps = {
   code: number;
   title: string;
@@ -27,12 +28,9 @@ export function ErrorPage({
 
       <p className="text-muted-foreground">{description}</p>
 
-      <Link
-        href={href}
-        className="bg-primary text-primary-foreground rounded-md px-4 py-2"
-      >
-        {buttonText}
-      </Link>
+      <Button asChild>
+        <Link href={href}>{buttonText}</Link>
+      </Button>
     </div>
   );
 }
