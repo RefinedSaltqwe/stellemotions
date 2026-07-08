@@ -31,8 +31,15 @@ export async function getCurrentUser() {
       },
     });
 
-    return user;
+    return {
+      success: true,
+      data: user,
+      message: "Success",
+    };
   } catch {
-    return null;
+    return {
+      success: false,
+      message: "Failed to fetch current user",
+    };
   }
 }

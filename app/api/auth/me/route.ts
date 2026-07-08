@@ -33,7 +33,7 @@ export async function GET() {
       return errorResponse("Unauthorized.", 401);
     }
 
-    return user;
+    return successResponse(user, "Successful");
   } catch (error) {
     console.error("[AUTH_ME]", error);
 

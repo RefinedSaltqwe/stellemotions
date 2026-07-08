@@ -103,7 +103,9 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        {user && <NavUser user={{ name: user.name, email: user.email }} />}
+        {user?.data && (
+          <NavUser user={{ name: user.data.name, email: user.data.email }} />
+        )}
       </SidebarFooter>
     </Sidebar>
   );
