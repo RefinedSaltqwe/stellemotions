@@ -18,3 +18,15 @@ export type LoginUser = {
   email: string;
   name: string;
 };
+
+export type ActionResult<T> =
+  | {
+      success: true;
+      data: T;
+      message: string;
+    }
+  | {
+      success: false;
+      message: string;
+      errors?: Record<string, string[]>;
+    };

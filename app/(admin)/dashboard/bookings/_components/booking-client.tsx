@@ -1,5 +1,5 @@
 "use client";
-import { getAllBookings, getBookingStats } from "@/server/requests/bookings";
+import { getAllBookings, getBookingStats } from "@/server/queries/bookings";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { BookingTable } from "./booking-table";
@@ -24,10 +24,10 @@ const BookingClient: React.FC = () => {
 
       <BookingToolbar />
 
-      {bookings && bookings.data.length === 0 ? (
+      {bookings && bookings.length === 0 ? (
         <EmptyState />
       ) : (
-        <BookingTable data={bookings?.data ?? []} />
+        <BookingTable data={bookings ?? []} />
       )}
     </div>
   );

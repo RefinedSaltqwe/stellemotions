@@ -1,4 +1,4 @@
-import { getAllBookings, getBookingStats } from "@/server/requests/bookings";
+import { getAllBookings, getBookingStats } from "@/server/queries/bookings";
 import {
   dehydrate,
   HydrationBoundary,

@@ -13,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { site } from "@/constants";
 import { fetchCurrentUser } from "@/lib/api/me";
@@ -27,6 +28,9 @@ import {
   SquaresFourIcon,
 } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const data = {
   user: {
@@ -81,6 +85,12 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     queryFn: fetchCurrentUser,
     queryKey: ["me"],
   });
+  const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
+
+  useEffect(() => {
+    setOpenMobile(false);
+  }, [pathname, setOpenMobile]);
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -90,10 +100,10 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
+              <Link href="#">
                 <CommandIcon className="size-5!" />
                 <span className="text-base font-semibold">{site.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

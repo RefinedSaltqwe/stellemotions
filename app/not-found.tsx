@@ -1,12 +1,12 @@
+import { ErrorPage } from "@/components/error-page";
+
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">404</h1>
-        <p className="mt-2 text-muted-foreground">
-          {`The page you're looking for doesn't exist.`}
-        </p>
-      </div>
-    </main>
+    <ErrorPage
+      code={404}
+      title="Page not found"
+      description="The page you are looking for doesn't exist."
+      image="/assets/images/error-404.png"
+    />
   );
 }

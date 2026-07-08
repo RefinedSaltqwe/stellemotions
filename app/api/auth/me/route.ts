@@ -4,6 +4,7 @@ import { errorResponse, successResponse } from "@/lib/api-response";
 import { SESSION_COOKIE } from "@/lib/auth/cookies";
 import { verifyToken } from "@/lib/auth/jwt";
 import { db } from "@/server/db";
+import { AppError } from "@/lib/errors";
 
 export async function GET() {
   try {
@@ -35,8 +36,12 @@ export async function GET() {
 
     return successResponse(user, "Successful");
   } catch (error) {
-    console.error("[AUTH_ME]", error);
+    if (error instanceof AppError) {
+      return errorResponse(error.message, error.status);
+    }
 
-    return errorResponse("Unauthorized.", 401);
+    console.error(error);
+
+    return errorResponse("Internal Server Error", 500);
   }
 }

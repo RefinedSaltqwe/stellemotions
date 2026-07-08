@@ -4,8 +4,13 @@ import { db } from "@/server/db";
 import { inquirySchema, type InquirySchema } from "./schema";
 import z from "zod";
 import { revalidatePath } from "next/cache";
+import { InternalServerError } from "@/lib/errors";
+import { Booking } from "@/prisma/generated/client";
+import { ActionResult } from "@/types";
 
-export async function upsertBooking(data: InquirySchema) {
+export async function upsertBooking(
+  data: InquirySchema,
+): Promise<ActionResult<Booking>> {
   const parsed = inquirySchema.safeParse(data);
 
   if (!parsed.success) {
@@ -13,6 +18,7 @@ export async function upsertBooking(data: InquirySchema) {
 
     return {
       success: false,
+      message: "Validation failed.",
       errors: errors.fieldErrors,
     };
   }
@@ -56,10 +62,6 @@ export async function upsertBooking(data: InquirySchema) {
   } catch (error) {
     console.error(error);
 
-    return {
-      success: false,
-      data: undefined,
-      message: "Something went wrong. Please try again.",
-    };
+    throw new InternalServerError("Failed to save booking.");
   }
 }

@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { db } from "@/server/db";
 import { verifyToken } from "./jwt";
 import { SESSION_COOKIE } from "./cookies";
+import { UnauthorizedError } from "../errors";
 
 export async function getCurrentUser() {
   const cookieStore = await cookies();
@@ -13,7 +14,7 @@ export async function getCurrentUser() {
   const token = cookieStore.get(SESSION_COOKIE)?.value;
 
   if (!token) {
-    return null;
+    throw new UnauthorizedError();
   }
 
   try {
@@ -34,7 +35,7 @@ export async function getCurrentUser() {
     return {
       success: true,
       data: user,
-      message: "Success",
+      message: "Successful",
     };
   } catch {
     return {

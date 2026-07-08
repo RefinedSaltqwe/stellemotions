@@ -19,7 +19,7 @@ export async function proxy(request: NextRequest) {
     }
 
     // Protect dashboard -> redirect to home
-    return NextResponse.redirect(new URL("/404", request.url));
+    return NextResponse.redirect(new URL("/not-found", request.url));
   }
 
   try {
