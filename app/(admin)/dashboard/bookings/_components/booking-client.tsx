@@ -18,7 +18,7 @@ const BookingClient: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6 px-4 lg:px-6">
+    <div className="space-y-6 px-4 lg:px-6 max-w-7xl w-full mx-auto align-middle">
       <BookingStats
         total={stats?.total ?? 0}
         pending={stats?.pending ?? 0}
