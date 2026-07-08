@@ -1,11 +1,5 @@
-import { ApiResponse } from "@/types";
+import { ApiResponse, LoginUser } from "@/types";
 import { LoginUserSchema } from "../validation/login-user-schema";
-
-type LoginUser = {
-  id: string;
-  email: string;
-  name: string;
-};
 
 export async function loginUser(
   data: LoginUserSchema,

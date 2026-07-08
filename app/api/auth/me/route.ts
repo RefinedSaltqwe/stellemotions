@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
 
-import { db } from "@/server/db";
 import { errorResponse, successResponse } from "@/lib/api-response";
-import { verifyToken } from "@/lib/auth/jwt";
 import { SESSION_COOKIE } from "@/lib/auth/cookies";
+import { verifyToken } from "@/lib/auth/jwt";
+import { db } from "@/server/db";
 
 export async function GET() {
   try {
@@ -33,7 +33,7 @@ export async function GET() {
       return errorResponse("Unauthorized.", 401);
     }
 
-    return successResponse(user);
+    return user;
   } catch (error) {
     console.error("[AUTH_ME]", error);
 

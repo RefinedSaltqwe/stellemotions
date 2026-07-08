@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/app/(admin)/dashboard/_component/app-sidebar";
+import AppSidebar from "@/app/(admin)/dashboard/_component/app-sidebar";
 import SiteHeader from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";

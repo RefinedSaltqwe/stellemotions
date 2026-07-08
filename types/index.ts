@@ -12,3 +12,9 @@ export interface ApiResponse<T> {
   message: string;
   data: T;
 }
+
+export type LoginUser = {
+  id: string;
+  email: string;
+  name: string;
+};

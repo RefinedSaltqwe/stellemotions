@@ -14,6 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { site } from "@/constants";
+import { fetchCurrentUser } from "@/lib/api/me";
 import {
   BookBookmarkIcon,
   ChartLineIcon,
@@ -24,13 +26,12 @@ import {
   ImageIcon,
   SquaresFourIcon,
 } from "@phosphor-icons/react";
-import { site } from "@/constants";
+import { useQuery } from "@tanstack/react-query";
 
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
@@ -75,7 +76,11 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
+  const { data: user } = useQuery({
+    queryFn: fetchCurrentUser,
+    queryKey: ["me"],
+  });
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -98,8 +103,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        {user && <NavUser user={{ name: user.name, email: user.email }} />}
       </SidebarFooter>
     </Sidebar>
   );
-}
+};
+
+export default AppSidebar;

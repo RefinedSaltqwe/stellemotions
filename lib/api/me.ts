@@ -2,11 +2,9 @@
 export async function fetchCurrentUser() {
   const response = await fetch("/api/auth/me");
 
-  const result = await response.json();
-
-  if (!response.ok || !result.success) {
-    throw new Error(result.message);
+  if (!response.ok) {
+    throw new Error("Unauthorized");
   }
 
-  return result.data;
+  return response.json();
 }
