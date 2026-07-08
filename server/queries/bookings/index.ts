@@ -17,17 +17,37 @@ export const getAllBookings = cache(async () => {
 
 export const getBookingStats = cache(async () => {
   try {
-    const total = await db.booking.count();
+    const today = new Date();
 
-    const pending = await db.booking.count({
-      where: {
-        status: "PENDING",
-      },
-    });
+    const next30Days = new Date(today);
+    next30Days.setDate(today.getDate() + 30);
+
+    const [total, pending, upcoming] = await Promise.all([
+      db.booking.count(),
+
+      db.booking.count({
+        where: {
+          status: "PENDING",
+        },
+      }),
+
+      db.booking.count({
+        where: {
+          date: {
+            gte: today,
+            lte: next30Days,
+          },
+          status: {
+            in: ["PENDING", "CONFIRMED"],
+          },
+        },
+      }),
+    ]);
 
     return {
       total,
       pending,
+      upcoming,
     };
   } catch (error) {
     console.error(error);

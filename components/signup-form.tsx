@@ -112,7 +112,7 @@ export function SignupForm({
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel>Full Name</FieldLabel>
+                    <FieldLabel>Email</FieldLabel>
 
                     <Input
                       {...field}

@@ -4,8 +4,14 @@ import { MagnifyingGlassIcon, PlusIcon } from "@phosphor-icons/react";
 
 import { Input } from "@/components/ui/input";
 import UpsertBookingDialog from "./upsert-booking-dialog";
+import { Booking } from "@/prisma/generated/client";
+import { Table } from "@tanstack/react-table";
 
-export function BookingToolbar() {
+type BookingToolbarProps = {
+  table: Table<Booking>;
+};
+
+const BookingToolbar: React.FC<BookingToolbarProps> = ({ table }) => {
   return (
     <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
       <div className="relative w-full max-w-md">
@@ -14,7 +20,12 @@ export function BookingToolbar() {
           className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2"
         />
 
-        <Input className="pl-9" placeholder="Search bookings..." />
+        <Input
+          className="pl-9"
+          placeholder="Search bookings..."
+          value={(table.getState().globalFilter as string) ?? ""}
+          onChange={(e) => table.setGlobalFilter(e.target.value)}
+        />
       </div>
 
       <UpsertBookingDialog
@@ -28,4 +39,6 @@ export function BookingToolbar() {
       </UpsertBookingDialog>
     </div>
   );
-}
+};
+
+export default BookingToolbar;

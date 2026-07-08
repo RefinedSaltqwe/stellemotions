@@ -10,8 +10,14 @@ import {
 type BookingStatsProps = {
   total: number;
   pending: number;
+  upcoming: number;
 };
-const BookingStats: React.FC<BookingStatsProps> = ({ total, pending }) => {
+
+const BookingStats: React.FC<BookingStatsProps> = ({
+  total,
+  pending,
+  upcoming,
+}) => {
   return (
     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       <StatCard
@@ -30,7 +36,7 @@ const BookingStats: React.FC<BookingStatsProps> = ({ total, pending }) => {
 
       <StatCard
         title="Upcoming"
-        value="9"
+        value={upcoming.toString()}
         subtitle="Next 30 days"
         icon={<CalendarDotsIcon size={18} weight="duotone" />}
       />

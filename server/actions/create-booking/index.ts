@@ -1,16 +1,12 @@
 "use server";
 
-import { db } from "@/server/db";
-import { inquirySchema, type InquirySchema } from "./schema";
-import z from "zod";
-import { revalidatePath } from "next/cache";
 import { InternalServerError } from "@/lib/errors";
-import { Booking } from "@/prisma/generated/client";
-import { ActionResult } from "@/types";
+import { db } from "@/server/db";
+import { revalidatePath } from "next/cache";
+import z from "zod";
+import { inquirySchema, type InquirySchema } from "./schema";
 
-export async function upsertBooking(
-  data: InquirySchema,
-): Promise<ActionResult<Booking>> {
+export async function upsertBooking(data: InquirySchema) {
   const parsed = inquirySchema.safeParse(data);
 
   if (!parsed.success) {
