@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { site } from "@/constants";
 
 const quickLinks = [
   {
@@ -41,7 +42,7 @@ const MarketingSection: React.FC = () => {
           <div className="col-span-7 md:col-span-5 md:col-start-6">
             <p className="max-w-md leading-relaxed text-foreground md:text-xl">
               <span className="font-semibold uppercase">
-                We Are Stelle Motions,
+                We Are {site.name},
               </span>{" "}
               {`a husband-and-wife photography team based
               in Regina, Saskatchewan. We capture genuine moments, meaningful

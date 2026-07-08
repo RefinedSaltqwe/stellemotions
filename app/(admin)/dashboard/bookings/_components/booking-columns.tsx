@@ -1,7 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
+import {
+  EyeIcon,
+  ImagesIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 import { format } from "date-fns";
 import { BookingStatusBadge } from "./booking-status-badge";
 import UpsertBookingDialog from "./upsert-booking-dialog";
@@ -56,6 +61,13 @@ export const columns: ColumnDef<Booking>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex w-full gap-2 m-0 justify-center align-middle">
+          <Button
+            variant={"ghost"}
+            size={"icon"}
+            onClick={() => console.log(row.original)}
+          >
+            <ImagesIcon size={16} />
+          </Button>
           <Button
             variant={"ghost"}
             size={"icon"}

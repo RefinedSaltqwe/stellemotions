@@ -24,6 +24,7 @@ import {
   ImageIcon,
   SquaresFourIcon,
 } from "@phosphor-icons/react";
+import { site } from "@/constants";
 
 const data = {
   user: {
@@ -86,7 +87,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <CommandIcon className="size-5!" />
-                <span className="text-base font-semibold">Stelle Motions</span>
+                <span className="text-base font-semibold">{site.name}</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

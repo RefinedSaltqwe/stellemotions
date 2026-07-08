@@ -1,4 +1,5 @@
 import MenuList from "@/app/(landing)/_common/menu-list";
+import { site } from "@/constants";
 import React from "react";
 
 const Footer = () => {
@@ -37,7 +38,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="mt-16 border-t border-primary-foreground/10 pt-6 flex flex-col gap-3 text-center text-xs text-primary-foreground/50 md:flex-row md:justify-between">
-          <span>© 2026 Stelle Motions. All rights reserved.</span>
+          <span>© 2026 {site.name}. All rights reserved.</span>
 
           <span>Developed by Stephen Pelagio</span>
         </div>

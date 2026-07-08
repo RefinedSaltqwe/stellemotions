@@ -5,3 +5,10 @@ export interface StorySlide {
   description: string;
   image: string;
 }
+// types/api-response.ts
+
+export interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}

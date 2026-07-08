@@ -3,7 +3,7 @@ import { SectionCards } from "@/components/section-cards";
 
 import data from "./data.json";
 
-export default function Page() {
+export default function DashboardPage() {
   return (
     <>
       <SectionCards />

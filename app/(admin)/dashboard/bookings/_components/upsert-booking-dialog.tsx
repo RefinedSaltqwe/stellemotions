@@ -128,6 +128,7 @@ const UpsertBookingDialog: React.FC<UpsertBookingDialogProps> = ({
       toast.error("Something went wrong.");
     },
     onSettled: () => {
+      setOpen(false);
       if (!booking) form.reset();
     },
   });

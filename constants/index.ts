@@ -1,6 +1,10 @@
 import { StorySlide } from "@/types";
 import { SERVICES } from "./services";
 
+export const site = {
+  name: "Stelle Motions",
+};
+
 export const slides: StorySlide[] = [
   {
     id: 1,

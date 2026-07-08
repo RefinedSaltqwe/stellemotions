@@ -19,6 +19,7 @@ model Admin {
   name      String?
   email     String   @unique
   password  String
+  role      Role @default(ADMIN)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -97,4 +98,8 @@ enum BookingStatus {
   CONFIRMED
   COMPLETED
   CANCELLED
+}
+enum Role {
+  ADMIN
+  USER
 }

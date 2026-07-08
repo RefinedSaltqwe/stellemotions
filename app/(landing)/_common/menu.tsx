@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { XIcon } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import MenuList from "./menu-list";
+import { site } from "@/constants";
 
 const Menu: React.FC = () => {
   const showMenu = useNavbar((state) => state.showMenu);
@@ -38,7 +39,7 @@ const Menu: React.FC = () => {
             textOrientation: "mixed",
           }}
         >
-          Stelle Motions
+          {site.name}
         </span>
       </div>
       <div className="flex flex-row justify-end p-4">
