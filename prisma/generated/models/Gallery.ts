@@ -36,7 +36,8 @@ export type GallerySumAggregateOutputType = {
 
 export type GalleryMinAggregateOutputType = {
   id: string | null
-  image: string | null
+  imagePath: string | null
+  imageUrl: string | null
   alt: string | null
   caption: string | null
   order: number | null
@@ -48,7 +49,8 @@ export type GalleryMinAggregateOutputType = {
 
 export type GalleryMaxAggregateOutputType = {
   id: string | null
-  image: string | null
+  imagePath: string | null
+  imageUrl: string | null
   alt: string | null
   caption: string | null
   order: number | null
@@ -60,7 +62,8 @@ export type GalleryMaxAggregateOutputType = {
 
 export type GalleryCountAggregateOutputType = {
   id: number
-  image: number
+  imagePath: number
+  imageUrl: number
   alt: number
   caption: number
   order: number
@@ -82,7 +85,8 @@ export type GallerySumAggregateInputType = {
 
 export type GalleryMinAggregateInputType = {
   id?: true
-  image?: true
+  imagePath?: true
+  imageUrl?: true
   alt?: true
   caption?: true
   order?: true
@@ -94,7 +98,8 @@ export type GalleryMinAggregateInputType = {
 
 export type GalleryMaxAggregateInputType = {
   id?: true
-  image?: true
+  imagePath?: true
+  imageUrl?: true
   alt?: true
   caption?: true
   order?: true
@@ -106,7 +111,8 @@ export type GalleryMaxAggregateInputType = {
 
 export type GalleryCountAggregateInputType = {
   id?: true
-  image?: true
+  imagePath?: true
+  imageUrl?: true
   alt?: true
   caption?: true
   order?: true
@@ -205,7 +211,8 @@ export type GalleryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type GalleryGroupByOutputType = {
   id: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt: string | null
   caption: string | null
   order: number
@@ -240,7 +247,8 @@ export type GalleryWhereInput = {
   OR?: Prisma.GalleryWhereInput[]
   NOT?: Prisma.GalleryWhereInput | Prisma.GalleryWhereInput[]
   id?: Prisma.StringFilter<"Gallery"> | string
-  image?: Prisma.StringFilter<"Gallery"> | string
+  imagePath?: Prisma.StringFilter<"Gallery"> | string
+  imageUrl?: Prisma.StringFilter<"Gallery"> | string
   alt?: Prisma.StringNullableFilter<"Gallery"> | string | null
   caption?: Prisma.StringNullableFilter<"Gallery"> | string | null
   order?: Prisma.IntFilter<"Gallery"> | number
@@ -253,7 +261,8 @@ export type GalleryWhereInput = {
 
 export type GalleryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  image?: Prisma.SortOrder
+  imagePath?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   alt?: Prisma.SortOrderInput | Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -266,10 +275,11 @@ export type GalleryOrderByWithRelationInput = {
 
 export type GalleryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  imagePath?: string
   AND?: Prisma.GalleryWhereInput | Prisma.GalleryWhereInput[]
   OR?: Prisma.GalleryWhereInput[]
   NOT?: Prisma.GalleryWhereInput | Prisma.GalleryWhereInput[]
-  image?: Prisma.StringFilter<"Gallery"> | string
+  imageUrl?: Prisma.StringFilter<"Gallery"> | string
   alt?: Prisma.StringNullableFilter<"Gallery"> | string | null
   caption?: Prisma.StringNullableFilter<"Gallery"> | string | null
   order?: Prisma.IntFilter<"Gallery"> | number
@@ -278,11 +288,12 @@ export type GalleryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Gallery"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Gallery"> | Date | string
   collection?: Prisma.XOR<Prisma.CollectionScalarRelationFilter, Prisma.CollectionWhereInput>
-}, "id">
+}, "id" | "imagePath">
 
 export type GalleryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  image?: Prisma.SortOrder
+  imagePath?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   alt?: Prisma.SortOrderInput | Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -302,7 +313,8 @@ export type GalleryScalarWhereWithAggregatesInput = {
   OR?: Prisma.GalleryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.GalleryScalarWhereWithAggregatesInput | Prisma.GalleryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Gallery"> | string
-  image?: Prisma.StringWithAggregatesFilter<"Gallery"> | string
+  imagePath?: Prisma.StringWithAggregatesFilter<"Gallery"> | string
+  imageUrl?: Prisma.StringWithAggregatesFilter<"Gallery"> | string
   alt?: Prisma.StringNullableWithAggregatesFilter<"Gallery"> | string | null
   caption?: Prisma.StringNullableWithAggregatesFilter<"Gallery"> | string | null
   order?: Prisma.IntWithAggregatesFilter<"Gallery"> | number
@@ -314,7 +326,8 @@ export type GalleryScalarWhereWithAggregatesInput = {
 
 export type GalleryCreateInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -326,7 +339,8 @@ export type GalleryCreateInput = {
 
 export type GalleryUncheckedCreateInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -338,7 +352,8 @@ export type GalleryUncheckedCreateInput = {
 
 export type GalleryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -350,7 +365,8 @@ export type GalleryUpdateInput = {
 
 export type GalleryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -362,7 +378,8 @@ export type GalleryUncheckedUpdateInput = {
 
 export type GalleryCreateManyInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -374,7 +391,8 @@ export type GalleryCreateManyInput = {
 
 export type GalleryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -385,7 +403,8 @@ export type GalleryUpdateManyMutationInput = {
 
 export type GalleryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -407,7 +426,8 @@ export type GalleryOrderByRelationAggregateInput = {
 
 export type GalleryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  image?: Prisma.SortOrder
+  imagePath?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   alt?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -423,7 +443,8 @@ export type GalleryAvgOrderByAggregateInput = {
 
 export type GalleryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  image?: Prisma.SortOrder
+  imagePath?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   alt?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -435,7 +456,8 @@ export type GalleryMaxOrderByAggregateInput = {
 
 export type GalleryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  image?: Prisma.SortOrder
+  imagePath?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   alt?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -501,7 +523,8 @@ export type IntFieldUpdateOperationsInput = {
 
 export type GalleryCreateWithoutCollectionInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -512,7 +535,8 @@ export type GalleryCreateWithoutCollectionInput = {
 
 export type GalleryUncheckedCreateWithoutCollectionInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -552,7 +576,8 @@ export type GalleryScalarWhereInput = {
   OR?: Prisma.GalleryScalarWhereInput[]
   NOT?: Prisma.GalleryScalarWhereInput | Prisma.GalleryScalarWhereInput[]
   id?: Prisma.StringFilter<"Gallery"> | string
-  image?: Prisma.StringFilter<"Gallery"> | string
+  imagePath?: Prisma.StringFilter<"Gallery"> | string
+  imageUrl?: Prisma.StringFilter<"Gallery"> | string
   alt?: Prisma.StringNullableFilter<"Gallery"> | string | null
   caption?: Prisma.StringNullableFilter<"Gallery"> | string | null
   order?: Prisma.IntFilter<"Gallery"> | number
@@ -564,7 +589,8 @@ export type GalleryScalarWhereInput = {
 
 export type GalleryCreateManyCollectionInput = {
   id?: string
-  image: string
+  imagePath: string
+  imageUrl: string
   alt?: string | null
   caption?: string | null
   order?: number
@@ -575,7 +601,8 @@ export type GalleryCreateManyCollectionInput = {
 
 export type GalleryUpdateWithoutCollectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -586,7 +613,8 @@ export type GalleryUpdateWithoutCollectionInput = {
 
 export type GalleryUncheckedUpdateWithoutCollectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -597,7 +625,8 @@ export type GalleryUncheckedUpdateWithoutCollectionInput = {
 
 export type GalleryUncheckedUpdateManyWithoutCollectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -610,7 +639,8 @@ export type GalleryUncheckedUpdateManyWithoutCollectionInput = {
 
 export type GallerySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  image?: boolean
+  imagePath?: boolean
+  imageUrl?: boolean
   alt?: boolean
   caption?: boolean
   order?: boolean
@@ -623,7 +653,8 @@ export type GallerySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type GallerySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  image?: boolean
+  imagePath?: boolean
+  imageUrl?: boolean
   alt?: boolean
   caption?: boolean
   order?: boolean
@@ -636,7 +667,8 @@ export type GallerySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type GallerySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  image?: boolean
+  imagePath?: boolean
+  imageUrl?: boolean
   alt?: boolean
   caption?: boolean
   order?: boolean
@@ -649,7 +681,8 @@ export type GallerySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type GallerySelectScalar = {
   id?: boolean
-  image?: boolean
+  imagePath?: boolean
+  imageUrl?: boolean
   alt?: boolean
   caption?: boolean
   order?: boolean
@@ -659,7 +692,7 @@ export type GallerySelectScalar = {
   updatedAt?: boolean
 }
 
-export type GalleryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "image" | "alt" | "caption" | "order" | "collectionId" | "featured" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
+export type GalleryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "imagePath" | "imageUrl" | "alt" | "caption" | "order" | "collectionId" | "featured" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
 export type GalleryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   collection?: boolean | Prisma.CollectionDefaultArgs<ExtArgs>
 }
@@ -677,7 +710,8 @@ export type $GalleryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    image: string
+    imagePath: string
+    imageUrl: string
     alt: string | null
     caption: string | null
     order: number
@@ -1110,7 +1144,8 @@ export interface Prisma__GalleryClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface GalleryFieldRefs {
   readonly id: Prisma.FieldRef<"Gallery", 'String'>
-  readonly image: Prisma.FieldRef<"Gallery", 'String'>
+  readonly imagePath: Prisma.FieldRef<"Gallery", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"Gallery", 'String'>
   readonly alt: Prisma.FieldRef<"Gallery", 'String'>
   readonly caption: Prisma.FieldRef<"Gallery", 'String'>
   readonly order: Prisma.FieldRef<"Gallery", 'Int'>

@@ -5,6 +5,15 @@ export const site = {
   name: "Stelle Motions",
 };
 
+export const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+
+export const images = [
+  { key: "123cer", url: "/assets/images/couple-1.jpg" },
+  { key: "safas44", url: "/assets/images/couple-2.jpg" },
+  { key: "fasdasa", url: "/assets/images/couple-3.jpg" },
+  { key: "fas4525", url: "/assets/images/couple-4.jpg" },
+];
+
 export const slides: StorySlide[] = [
   {
     id: 1,

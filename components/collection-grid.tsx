@@ -2,14 +2,17 @@ import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Collection } from "@/prisma/generated/client";
 
 type CollectionGridProps = {
+  type: "dashboard" | "landing";
   collections: {
     title: string;
     description: string;
     image: string;
     link: string;
   }[];
+  //   collections: Collection[];
 };
 
 const CollectionGrid: React.FC<CollectionGridProps> = ({ collections }) => {

@@ -14,7 +14,7 @@ const Collection: React.FC = () => {
           </Link> */}
       </div>
 
-      <CollectionGrid collections={collections} />
+      <CollectionGrid collections={collections} type="landing" />
 
       <div className="mt-6 sm:hidden">
         <a href="#" className="block text-sm font-semibold ">

@@ -777,7 +777,8 @@ export const CollectionScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  heroImage: 'heroImage',
+  heroImagePath: 'heroImagePath',
+  heroImageUrl: 'heroImageUrl',
   featured: 'featured',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -788,7 +789,8 @@ export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof
 
 export const GalleryScalarFieldEnum = {
   id: 'id',
-  image: 'image',
+  imagePath: 'imagePath',
+  imageUrl: 'imageUrl',
   alt: 'alt',
   caption: 'caption',
   order: 'order',

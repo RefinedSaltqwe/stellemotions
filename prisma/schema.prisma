@@ -52,7 +52,9 @@ model Collection {
   title       String
 
   description String?   
-  heroImage   String
+
+  heroImagePath String
+  heroImageUrl   String
 
   featured    Boolean   @default(false)
 
@@ -65,7 +67,8 @@ model Collection {
 model Gallery {
   id           String      @id @default(cuid())
 
-  image        String
+  imagePath          String @unique
+  imageUrl        String
 
   alt          String?
   caption      String?

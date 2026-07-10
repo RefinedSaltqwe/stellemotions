@@ -28,7 +28,8 @@ export type CollectionMinAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  heroImage: string | null
+  heroImagePath: string | null
+  heroImageUrl: string | null
   featured: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -38,7 +39,8 @@ export type CollectionMaxAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  heroImage: string | null
+  heroImagePath: string | null
+  heroImageUrl: string | null
   featured: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -48,7 +50,8 @@ export type CollectionCountAggregateOutputType = {
   id: number
   title: number
   description: number
-  heroImage: number
+  heroImagePath: number
+  heroImageUrl: number
   featured: number
   createdAt: number
   updatedAt: number
@@ -60,7 +63,8 @@ export type CollectionMinAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  heroImage?: true
+  heroImagePath?: true
+  heroImageUrl?: true
   featured?: true
   createdAt?: true
   updatedAt?: true
@@ -70,7 +74,8 @@ export type CollectionMaxAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  heroImage?: true
+  heroImagePath?: true
+  heroImageUrl?: true
   featured?: true
   createdAt?: true
   updatedAt?: true
@@ -80,7 +85,8 @@ export type CollectionCountAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  heroImage?: true
+  heroImagePath?: true
+  heroImageUrl?: true
   featured?: true
   createdAt?: true
   updatedAt?: true
@@ -163,7 +169,8 @@ export type CollectionGroupByOutputType = {
   id: string
   title: string
   description: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured: boolean
   createdAt: Date
   updatedAt: Date
@@ -194,7 +201,8 @@ export type CollectionWhereInput = {
   id?: Prisma.StringFilter<"Collection"> | string
   title?: Prisma.StringFilter<"Collection"> | string
   description?: Prisma.StringNullableFilter<"Collection"> | string | null
-  heroImage?: Prisma.StringFilter<"Collection"> | string
+  heroImagePath?: Prisma.StringFilter<"Collection"> | string
+  heroImageUrl?: Prisma.StringFilter<"Collection"> | string
   featured?: Prisma.BoolFilter<"Collection"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Collection"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Collection"> | Date | string
@@ -205,7 +213,8 @@ export type CollectionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  heroImage?: Prisma.SortOrder
+  heroImagePath?: Prisma.SortOrder
+  heroImageUrl?: Prisma.SortOrder
   featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -219,7 +228,8 @@ export type CollectionWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CollectionWhereInput | Prisma.CollectionWhereInput[]
   title?: Prisma.StringFilter<"Collection"> | string
   description?: Prisma.StringNullableFilter<"Collection"> | string | null
-  heroImage?: Prisma.StringFilter<"Collection"> | string
+  heroImagePath?: Prisma.StringFilter<"Collection"> | string
+  heroImageUrl?: Prisma.StringFilter<"Collection"> | string
   featured?: Prisma.BoolFilter<"Collection"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Collection"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Collection"> | Date | string
@@ -230,7 +240,8 @@ export type CollectionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  heroImage?: Prisma.SortOrder
+  heroImagePath?: Prisma.SortOrder
+  heroImageUrl?: Prisma.SortOrder
   featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -246,7 +257,8 @@ export type CollectionScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Collection"> | string
   title?: Prisma.StringWithAggregatesFilter<"Collection"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Collection"> | string | null
-  heroImage?: Prisma.StringWithAggregatesFilter<"Collection"> | string
+  heroImagePath?: Prisma.StringWithAggregatesFilter<"Collection"> | string
+  heroImageUrl?: Prisma.StringWithAggregatesFilter<"Collection"> | string
   featured?: Prisma.BoolWithAggregatesFilter<"Collection"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Collection"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Collection"> | Date | string
@@ -256,7 +268,8 @@ export type CollectionCreateInput = {
   id?: string
   title: string
   description?: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -267,7 +280,8 @@ export type CollectionUncheckedCreateInput = {
   id?: string
   title: string
   description?: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -278,7 +292,8 @@ export type CollectionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -289,7 +304,8 @@ export type CollectionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -300,7 +316,8 @@ export type CollectionCreateManyInput = {
   id?: string
   title: string
   description?: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -310,7 +327,8 @@ export type CollectionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -320,7 +338,8 @@ export type CollectionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -330,7 +349,8 @@ export type CollectionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  heroImage?: Prisma.SortOrder
+  heroImagePath?: Prisma.SortOrder
+  heroImageUrl?: Prisma.SortOrder
   featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -340,7 +360,8 @@ export type CollectionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  heroImage?: Prisma.SortOrder
+  heroImagePath?: Prisma.SortOrder
+  heroImageUrl?: Prisma.SortOrder
   featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -350,7 +371,8 @@ export type CollectionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  heroImage?: Prisma.SortOrder
+  heroImagePath?: Prisma.SortOrder
+  heroImageUrl?: Prisma.SortOrder
   featured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -383,7 +405,8 @@ export type CollectionCreateWithoutGalleryInput = {
   id?: string
   title: string
   description?: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -393,7 +416,8 @@ export type CollectionUncheckedCreateWithoutGalleryInput = {
   id?: string
   title: string
   description?: string | null
-  heroImage: string
+  heroImagePath: string
+  heroImageUrl: string
   featured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -419,7 +443,8 @@ export type CollectionUpdateWithoutGalleryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -429,7 +454,8 @@ export type CollectionUncheckedUpdateWithoutGalleryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  heroImage?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImagePath?: Prisma.StringFieldUpdateOperationsInput | string
+  heroImageUrl?: Prisma.StringFieldUpdateOperationsInput | string
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -470,7 +496,8 @@ export type CollectionSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   id?: boolean
   title?: boolean
   description?: boolean
-  heroImage?: boolean
+  heroImagePath?: boolean
+  heroImageUrl?: boolean
   featured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -482,7 +509,8 @@ export type CollectionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   id?: boolean
   title?: boolean
   description?: boolean
-  heroImage?: boolean
+  heroImagePath?: boolean
+  heroImageUrl?: boolean
   featured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -492,7 +520,8 @@ export type CollectionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   id?: boolean
   title?: boolean
   description?: boolean
-  heroImage?: boolean
+  heroImagePath?: boolean
+  heroImageUrl?: boolean
   featured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -502,13 +531,14 @@ export type CollectionSelectScalar = {
   id?: boolean
   title?: boolean
   description?: boolean
-  heroImage?: boolean
+  heroImagePath?: boolean
+  heroImageUrl?: boolean
   featured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CollectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "heroImage" | "featured" | "createdAt" | "updatedAt", ExtArgs["result"]["collection"]>
+export type CollectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "heroImagePath" | "heroImageUrl" | "featured" | "createdAt" | "updatedAt", ExtArgs["result"]["collection"]>
 export type CollectionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   gallery?: boolean | Prisma.Collection$galleryArgs<ExtArgs>
   _count?: boolean | Prisma.CollectionCountOutputTypeDefaultArgs<ExtArgs>
@@ -525,7 +555,8 @@ export type $CollectionPayload<ExtArgs extends runtime.Types.Extensions.Internal
     id: string
     title: string
     description: string | null
-    heroImage: string
+    heroImagePath: string
+    heroImageUrl: string
     featured: boolean
     createdAt: Date
     updatedAt: Date
@@ -956,7 +987,8 @@ export interface CollectionFieldRefs {
   readonly id: Prisma.FieldRef<"Collection", 'String'>
   readonly title: Prisma.FieldRef<"Collection", 'String'>
   readonly description: Prisma.FieldRef<"Collection", 'String'>
-  readonly heroImage: Prisma.FieldRef<"Collection", 'String'>
+  readonly heroImagePath: Prisma.FieldRef<"Collection", 'String'>
+  readonly heroImageUrl: Prisma.FieldRef<"Collection", 'String'>
   readonly featured: Prisma.FieldRef<"Collection", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Collection", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Collection", 'DateTime'>
