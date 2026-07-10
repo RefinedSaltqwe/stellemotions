@@ -1,4 +1,3 @@
-import { collections } from "@/constants";
 import CollectionGrid from "../collection-grid";
 
 const Collection: React.FC = () => {
@@ -14,7 +13,7 @@ const Collection: React.FC = () => {
           </Link> */}
       </div>
 
-      <CollectionGrid collections={collections} type="landing" />
+      <CollectionGrid type="landing" />
 
       <div className="mt-6 sm:hidden">
         <a href="#" className="block text-sm font-semibold ">
