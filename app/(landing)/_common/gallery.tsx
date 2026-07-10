@@ -1,29 +1,10 @@
 import GalleryGrid from "./gallery-grid";
 
 type GalleryProps = {
-  id?: string;
+  images: string[];
 };
 
-const images = [
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-1.jpg",
-  "/assets/images/couple-2.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-6.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-6.jpg",
-];
-
-const Gallery: React.FC<GalleryProps> = ({ id }) => {
+const Gallery: React.FC<GalleryProps> = ({ images }) => {
   return (
     <section className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-12">

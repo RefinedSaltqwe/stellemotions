@@ -42,7 +42,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <QueryProvider>{children}</QueryProvider>
-        <Toaster />
+        <Toaster duration={5000} />
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Dialog,
@@ -48,52 +48,45 @@ type UpsertGalleryDialogProps = {
   title: string;
   description: string;
   collection?: Collection;
-  className: string;
+  collectionId?: string;
   children: React.ReactNode;
-  size?:
-    | "default"
-    | "xs"
-    | "sm"
-    | "lg"
-    | "icon"
-    | "icon-xs"
-    | "icon-sm"
-    | "icon-lg"
-    | null
-    | undefined;
-  buttonVariant:
-    | "default"
-    | "link"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "destructive"
-    | null
-    | undefined;
 };
 
 type ImageData = {
   path: string;
   url: string;
-  sort: number;
+  order: number;
 };
 
 const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
   collection,
-  className,
   children,
-  buttonVariant,
-  size,
   title,
   description,
 }) => {
   const [open, setOpen] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [images, setImages] = useState<ImageData[]>([]);
-  const [image, setImage] = useState<ImageData | null>(null);
   const [heroError, setHeroError] = useState(false);
+  const [image, setImage] = useState<ImageData | null>(
+    collection
+      ? {
+          url: collection.heroImageUrl,
+          path: collection.heroImagePath,
+          order: 0,
+        }
+      : null,
+  );
+  const [images, setImages] = useState<ImageData[]>(
+    collection?.gallery.map((image) => ({
+      path: image.imagePath,
+      url: image.imageUrl,
+      order: image.order,
+    })) ?? [],
+  );
+
   const fileInputRefHero = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
   const queryClient = useQueryClient();
 
   const form = useForm<CollectionSchema>({
@@ -106,9 +99,9 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
       heroImageUrl: collection?.heroImageUrl ?? "",
       gallery:
         collection?.gallery.map((image) => ({
-          imagePath: image.imagePath,
-          imageUrl: image.imageUrl,
-          sort: image.order,
+          path: image.imagePath,
+          url: image.imageUrl,
+          order: image.order,
         })) ?? [],
     },
   });
@@ -118,7 +111,7 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
       mutationFn: upsertCollection,
       onSuccess: async (data) => {
         setSaved(true);
-        toast.success("New Collection Created.", {
+        toast.success("Success", {
           description: data.message,
         });
         await queryClient.invalidateQueries({
@@ -204,11 +197,11 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
             {
               url: response.url,
               path: response.path,
-              sort: startSort + index,
+              order: startSort + index,
             },
           ]);
         } else {
-          setImage({ url: response.url, path: response.path, sort: 0 });
+          setImage({ url: response.url, path: response.path, order: 0 });
         }
       }
     } catch (error) {
@@ -255,11 +248,13 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
   };
 
   function onSubmit(data: CollectionSchema) {
+    console.log("Submit");
     if (!image) {
       setHeroError(true);
       return;
     }
     setHeroError(false);
+
     const collectionData = {
       ...data,
       heroImagePath: image?.path,
@@ -269,13 +264,51 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
 
     mutateUpsertGallery(collectionData);
   }
+
+  useEffect(() => {
+    form.reset({
+      id: collection?.id,
+      title: collection?.title ?? "",
+      description: collection?.description ?? "",
+      heroImagePath: collection?.heroImagePath ?? "",
+      heroImageUrl: collection?.heroImageUrl ?? "",
+      gallery:
+        collection?.gallery.map((image) => ({
+          path: image.imagePath,
+          url: image.imageUrl,
+          order: image.order,
+        })) ?? [],
+    });
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setImage(
+      collection
+        ? {
+            path: collection.heroImagePath,
+            url: collection.heroImageUrl,
+            order: 0,
+          }
+        : null,
+    );
+
+    setImages(
+      collection?.gallery.map((image) => ({
+        path: image.imagePath,
+        url: image.imageUrl,
+        order: image.order,
+      })) ?? [],
+    );
+
+    setHeroError(false);
+  }, [open, collection, form]);
+
   return (
     <Dialog
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
 
-        if (!isOpen && !saved) {
+        if (!isOpen && !saved && !collection) {
           handleDialogClosed();
         }
 
@@ -284,11 +317,7 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
         }
       }}
     >
-      <DialogTrigger asChild>
-        <Button size={size} variant={buttonVariant} className={cn(className)}>
-          {children}
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
 
       <DialogContent
         onInteractOutside={(e) => e.preventDefault()}
@@ -498,7 +527,7 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
               <Button
                 type="submit"
                 form="booking-inquiry-form"
-                disabled={upsertingGallery}
+                disabled={upsertingGallery || isUploading}
               >
                 {upsertingGallery ? <Spinner /> : title}
               </Button>

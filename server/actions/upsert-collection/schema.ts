@@ -11,7 +11,7 @@ export const collectionSchema = z.object({
       z.object({
         path: z.string(),
         url: z.string(),
-        sort: z.number().int().nonnegative(),
+        order: z.number().int().nonnegative(),
       }),
     )
     .optional(),

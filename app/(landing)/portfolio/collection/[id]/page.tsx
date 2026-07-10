@@ -1,6 +1,11 @@
-import Gallery from "@/app/(landing)/_common/gallery";
-import HeroTwo from "@/app/(landing)/_common/hero-two";
+import { getCollection } from "@/server/queries/collections";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import React from "react";
+import CollectionClient from "../_components/collection-client";
 
 type CollectionPageProps = {
   params: Promise<{
@@ -10,17 +15,17 @@ type CollectionPageProps = {
 
 const CollectionPage: React.FC<CollectionPageProps> = async ({ params }) => {
   const { id } = await params;
+  const queryClient = new QueryClient();
 
-  console.log(id);
+  await queryClient.prefetchQuery({
+    queryKey: ["collection-", id],
+    queryFn: () => getCollection(id),
+  });
+
   return (
-    <>
-      <HeroTwo
-        image="/assets/images/stellemotions-hero.jpg"
-        title="Portfolio"
-        className="h-screen"
-      />
-      <Gallery />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <CollectionClient id={id} />
+    </HydrationBoundary>
   );
 };
 export default CollectionPage;

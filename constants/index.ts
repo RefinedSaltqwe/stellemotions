@@ -108,33 +108,45 @@ export const faqs = [
 
 export const collections = [
   {
+    id: "1",
     title: "Bride + Groom",
     description: "Wedding",
-    image: "/assets/images/couple-1.jpg",
+    heroImageUrl: "/assets/images/couple-1.jpg",
     link: "/portfolio/collection/12124123252",
   },
   {
+    id: "2",
     title: "Bride + Groom",
     description: "Wedding",
-    image: "/assets/images/couple-2.jpg",
+    heroImageUrl: "/assets/images/couple-2.jpg",
     link: "/portfolio/collection/12124123252",
   },
   {
+    id: "3",
     title: "Bride + Groom",
     description: "Couple",
-    image: "/assets/images/couple-3.jpg",
+    heroImageUrl: "/assets/images/couple-3.jpg",
     link: "/portfolio/collection/12124123252",
   },
   {
+    id: "4",
     title: "Bride + Groom",
     description: "Lifestyle",
-    image: "/assets/images/couple-4.jpg",
+    heroImageUrl: "/assets/images/couple-4.jpg",
     link: "/portfolio/collection/12124123252",
   },
   {
+    id: "5",
     title: "Bride + Groom",
     description: "Wedding",
-    image: "/assets/images/couple-5.jpg",
+    heroImageUrl: "/assets/images/couple-5.jpg",
+    link: "/portfolio/collection/12124123252",
+  },
+  {
+    id: "6",
+    title: "Bride + Groom",
+    description: "Wedding",
+    heroImageUrl: "/assets/images/couple-1.jpg",
     link: "/portfolio/collection/12124123252",
   },
 ];

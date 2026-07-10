@@ -50,7 +50,7 @@ export async function upsertCollection(data: CollectionSchema) {
             imageUrl: image.url,
             alt: `image for ${parsed.data.title} collection`,
             caption: `image for ${parsed.data.title} collection`,
-            order: image.sort,
+            order: image.order,
             collectionId: collection.id,
           })),
         });
@@ -59,7 +59,7 @@ export async function upsertCollection(data: CollectionSchema) {
       return collection;
     });
 
-    revalidatePath("/dashboard/collections", "page");
+    revalidatePath("/dashboard/gallery", "page");
     revalidatePath("/portfolio", "page");
 
     return {
