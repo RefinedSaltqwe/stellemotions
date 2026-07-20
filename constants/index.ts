@@ -1,5 +1,8 @@
 export const site = {
   name: "Stelle Motions",
+  email: "stellemotions@gmail.com",
+  city: "Regina",
+  province: "Saskatchewan",
 };
 
 export const MAX_SIZE = 10 * 1024 * 1024; // 10 MB

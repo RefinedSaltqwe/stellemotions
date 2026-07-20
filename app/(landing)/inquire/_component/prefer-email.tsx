@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { site } from "@/constants";
 import Link from "next/link";
 import React from "react";
 
@@ -12,10 +13,10 @@ const PreferEmail: React.FC = () => {
         </p>
 
         <a
-          href="mailto:stellemotions@gmail.com"
+          href={`mailto:${site.email}`}
           className="mt-4 flex items-center gap-2 font-serif text-2xl transition-opacity hover:opacity-70"
         >
-          stellemotions@gmail.com
+          {site.email}
         </a>
 
         <p className="mt-3 max-w-md text-sm text-muted-foreground">
@@ -24,7 +25,7 @@ const PreferEmail: React.FC = () => {
         </p>
 
         <Button asChild variant="outline" className="mt-6">
-          <Link href="mailto:stellemotions@gmail.com">Email Us</Link>
+          <Link href={`mailto:${site.email}`}>Email Us</Link>
         </Button>
       </div>
     </>
