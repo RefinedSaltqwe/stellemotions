@@ -1,5 +1,6 @@
-import { processGuide } from "@/constants";
+import { processGuide } from "@/constants/services";
 import React from "react";
+import Heading from "./heading";
 
 type ProcessProps = {
   s?: string;
@@ -9,15 +10,11 @@ const Process: React.FC<ProcessProps> = () => {
   return (
     <div className="flex w-full bg-foreground text-primary-foreground">
       <div className="flex flex-col items-center justify-center max-w-7xl mx-auto px-4 py-20 md:py-32 gap-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-muted-foreground">
-            Where adventure begins
-          </p>
-
-          <h2 className="mt-5 font-serif text-5xl tracking-tight text-muted lg:text-7xl">
-            The Stellar Experience
-          </h2>
-        </div>
+        <Heading
+          textColor="whiteMuted"
+          eyebrow="Where adventure begins"
+          title="The Stellar Experience"
+        />
 
         <div className="flex flex-col w-full items-start gap-12 md:gap-4 md:flex-row px-14 md:px-0">
           {processGuide.map((step, index) => (

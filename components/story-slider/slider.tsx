@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { StorySlide } from "@/types";
+import Heading from "@/app/(landing)/_common/heading";
 
 type Props = {
   slide: StorySlide;
@@ -38,19 +39,12 @@ export default function Slide({ slide }: Props) {
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-muted">
-            {slide.eyebrow}
-          </p>
-
-          <h2 className="mt-5 font-serif text-5xl tracking-tight text-muted lg:text-7xl">
-            {slide.title}
-          </h2>
-
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-muted">
-            {slide.description}
-          </p>
-        </div>
+        <Heading
+          textColor="white"
+          eyebrow={slide.eyebrow}
+          title={slide.title}
+          description={slide.description}
+        />
       </div>
     </motion.div>
   );

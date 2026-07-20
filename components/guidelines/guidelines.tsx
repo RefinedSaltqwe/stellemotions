@@ -1,10 +1,11 @@
 "use client";
+import Heading from "@/app/(landing)/_common/heading";
 import {
   AirplaneTiltIcon,
-  CalendarDotsIcon,
-  CreditCardIcon,
   FileTextIcon,
   GiftIcon,
+  HeartStraightIcon,
+  PaletteIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react";
 import GuidelineCard from "./card";
@@ -13,28 +14,40 @@ export const guidelines = [
   {
     title: "Booking",
     description:
-      "A signed agreement and a 30% non-refundable retainer are required to officially reserve your date.",
+      "Reserve your date with a signed agreement and a 30% retainer. All collections are priced in Canadian Dollars (CAD), with the remaining balance due one week before your session.",
     icon: FileTextIcon,
   },
-
   {
-    title: "Final Payment",
+    title: "Our Style",
     description:
-      "The remaining balance is due 1 week before your wedding or portrait session.",
-    icon: CalendarDotsIcon,
+      "Every story is unique, but our style remains consistent. We capture genuine moments and carefully edit every image in our signature style, creating a timeless gallery you'll cherish for years to come.",
+    icon: PaletteIcon,
   },
 
+  // {
+  //   title: "Final Payment",
+  //   description:
+  //     "The remaining balance is due 1 week before your wedding or portrait session.",
+  //   icon: CalendarDotsIcon,
+  // },
+
+  // {
+  //   title: "Pricing",
+  //   description:
+  //     "All collections are priced in Canadian Dollars (CAD) and are subject to applicable taxes.",
+  //   icon: CreditCardIcon,
+  // },
   {
-    title: "Pricing",
+    title: "Experience",
     description:
-      "All collections are priced in Canadian Dollars (CAD) and are subject to applicable taxes.",
-    icon: CreditCardIcon,
+      "No modeling experience is needed. We'll gently guide you throughout your session so you can focus on being present with the people you love.",
+    icon: HeartStraightIcon,
   },
 
   {
     title: "Travel",
     description:
-      "Based in Regina, Saskatchewan, we're available for travel throughout Canada and beyond. Travel or accommodation fees may apply depending on the location.",
+      "Based in Regina, Saskatchewan, we're available for travel throughout Canada. Travel or accommodation fees may apply depending on the location.",
     icon: AirplaneTiltIcon,
   },
 
@@ -59,21 +72,14 @@ export default function Guidelines() {
       <div className="container mx-auto px-6">
         {/* Heading */}
 
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-muted-foreground">
-            BEFORE YOU BOOK
-          </p>
-
-          <h2 className="mt-5 font-serif text-5xl tracking-tight text-foreground lg:text-7xl">
-            Everything You Need To Know
-          </h2>
-
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
-            We believe every great experience begins with clear communication.
+        <Heading
+          textColor="blackMuted"
+          eyebrow="BEFORE YOU BOOK"
+          title="Everything You Need To Know"
+          description="We believe every great experience begins with clear communication.
             Here are a few important details to help you feel confident before
-            booking your session or wedding.
-          </p>
-        </div>
+            booking your session or wedding."
+        />
 
         {/* Decorative Divider */}
 
@@ -88,7 +94,7 @@ export default function Guidelines() {
         {/* Cards */}
 
         <div className="grid gap-y-0 md:gap-y-16 gap-x-10 md:grid-cols-2 xl:grid-cols-3">
-          {guidelines.map((item, index) => (
+          {guidelines.map((item) => (
             <GuidelineCard
               key={item.title}
               title={item.title}

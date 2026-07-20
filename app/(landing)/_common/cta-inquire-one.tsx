@@ -8,25 +8,22 @@ type CtaInquireOneProps = {
 };
 
 const CtaInquireOne: React.FC<CtaInquireOneProps> = ({
-  title = "Let's create some memories truly meaningful and wonderfully you",
+  title = "Let's tell your story",
 }) => {
   return (
     <section className="bg-accent flex justify-center text-accent-foreground pb-0 pt-20 md:py-0 px-8">
       <div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl">
-        <div className="w-full flex flex-col md:pr-10 gap-12 -translate-y-20 md:translate-0 md:py-16">
-          <h6 className="uppercase tracking-wider font-light text-sm">
+        <div className="w-full flex flex-col md:pr-10 -translate-y-20 md:translate-0 md:py-16">
+          <h6 className="text-xs font-medium uppercase tracking-[0.35em]">
             Book a session
           </h6>
-          <h1 className="text-3xl lg:text-7xl xl:text-5xl font-light font-serif tracking-tight uppercase">
+          <h1 className="mt-5 font-serif text-5xl tracking-tight text-foreground lg:text-7xl">
             {title}
           </h1>
-          <p className="text-lg tracking-wider font-light leading-6">
-            Hope grows golden find eye except darling loved hour else cool
-            change. Breeze yours dim work wood, whisper breast air terribly
-            spirit. Wave strength better wandering walls walking toward season
-            woo times.
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 ">
+            {`Every story is different, and we'd love to hear yours. Together, we'll create timeless images that feel true to who you are.`}
           </p>
-          <div className="gap-4">
+          <div className="mt-10">
             <Button asChild>
               <Link href="/services">See Pricing</Link>
             </Button>

@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import Navigation from "./navigation";
-import { slides } from "@/constants";
 import Slide from "./slider";
+import { slides } from "@/constants/services";
 
 export default function StorySlider() {
   const [current, setCurrent] = useState(0);
@@ -80,7 +80,7 @@ export default function StorySlider() {
 
   return (
     <section
-      className="relative h-[80vh] md:h-[60vh] w-full overflow-hidden bg-primary"
+      className="relative h-[80vh] w-full overflow-hidden bg-primary"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}

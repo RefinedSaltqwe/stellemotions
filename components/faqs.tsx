@@ -1,24 +1,26 @@
 "use client";
 
+import Heading from "@/app/(landing)/_common/heading";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqs } from "@/constants";
+import { faqs } from "@/constants/services";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 
 export default function FAQSection() {
   return (
     <section className="bg-background py-24">
       <div className="container mx-auto max-w-7xl px-6">
-        <h2 className="mt-5 font-serif tracking-tight text-foreground text-7xl hidden md:block">
-          Frequently Asked Questions
-        </h2>
-        <h2 className="mt-5 font-serif tracking-tight text-foreground text-7xl block md:hidden">
-          FAQs
-        </h2>
+        <div className="hidden md:block">
+          <Heading textColor="black" title="Frequently Asked Questions" />
+        </div>
+
+        <div className="block md:hidden">
+          <Heading textColor="black" title="FAQs" />
+        </div>
 
         <Accordion type="single" collapsible className="mt-16 w-full">
           {faqs.map((faq, index) => (
