@@ -6,6 +6,7 @@ import HeroTwo from "../_common/hero-two";
 import InformationSection from "../_common/information-section";
 import Process from "../_common/the-process";
 import ServiceClient from "./_components/service-client";
+import CTASimpleSection from "../_common/cta-simple";
 
 const ServicesPage: React.FC = () => {
   return (
@@ -20,6 +21,12 @@ const ServicesPage: React.FC = () => {
       <Guidelines />
       <Process />
       <StorySlider />
+      <CTASimpleSection
+        eyebrow="Your story starts here."
+        title="LET'S TELL YOUR STORY"
+        buttonText="INQUIRE"
+        buttonHref="/inquire"
+      />
       <FAQSection />
     </>
   );

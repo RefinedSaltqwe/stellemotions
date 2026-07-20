@@ -12,7 +12,7 @@ import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 
 export default function FAQSection() {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-secondary py-24">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="hidden md:block">
           <Heading textColor="black" title="Frequently Asked Questions" />

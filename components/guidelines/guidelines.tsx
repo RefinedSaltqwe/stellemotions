@@ -2,7 +2,7 @@
 import Heading from "@/app/(landing)/_common/heading";
 import {
   AirplaneTiltIcon,
-  FileTextIcon,
+  BookOpenTextIcon,
   GiftIcon,
   HeartStraightIcon,
   PaletteIcon,
@@ -15,7 +15,7 @@ export const guidelines = [
     title: "Booking",
     description:
       "Reserve your date with a signed agreement and a 30% retainer. All collections are priced in Canadian Dollars (CAD), with the remaining balance due one week before your session.",
-    icon: FileTextIcon,
+    icon: BookOpenTextIcon,
   },
   {
     title: "Our Style",
