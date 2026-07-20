@@ -83,15 +83,9 @@ const InquiryForm: React.FC = () => {
 
   return (
     <Card className="w-full border-border/50 bg-background shadow-none">
-      <CardHeader className="space-y-3 text-center">
-        <CardTitle className="font-serif text-xl">
-          {`Let's Create Something Beautiful`}
-        </CardTitle>
-
-        <CardDescription className="mx-auto max-w-lg text-base leading-relaxed">
-          {`We'd love to hear your story. Fill out the form below and we'll get
-          back to you within 24–48 hours.`}
-        </CardDescription>
+      <CardHeader className="hidden">
+        <CardTitle></CardTitle>
+        <CardDescription></CardDescription>
       </CardHeader>
 
       <CardContent>
