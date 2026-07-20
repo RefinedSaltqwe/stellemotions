@@ -33,6 +33,7 @@ const MarketingSection: React.FC = () => {
                 src="/assets/images/couple-1.jpg"
                 alt=""
                 fill
+                sizes="(max-width: 768px) 42vw, 25vw"
                 className="object-cover"
               />
             </div>
@@ -65,6 +66,9 @@ const MarketingSection: React.FC = () => {
                 src="/assets/images/couple-2.jpg"
                 alt=""
                 fill
+                sizes="(max-width: 640px) 67vw,
+         (max-width: 768px) 58vw,
+         50vw"
                 className="object-cover"
               />
             </div>
@@ -78,6 +82,7 @@ const MarketingSection: React.FC = () => {
                   src="/assets/images/couple-3.jpg"
                   alt=""
                   fill
+                  sizes="(max-width: 768px) 50vw, 50vw"
                   className="object-cover"
                 />
               </div>
@@ -88,6 +93,7 @@ const MarketingSection: React.FC = () => {
                   src="/assets/images/couple-4.jpg"
                   alt=""
                   fill
+                  sizes="192px"
                   className="object-cover"
                 />
               </div>
@@ -149,6 +155,7 @@ const MarketingSection: React.FC = () => {
                   src="/assets/images/couple-5.jpg"
                   alt=""
                   fill
+                  sizes="(max-width:768px) 50vw, 18vw"
                   className="object-cover"
                 />
               </div>
@@ -158,6 +165,7 @@ const MarketingSection: React.FC = () => {
                   src="/assets/images/couple-6.jpg"
                   alt=""
                   fill
+                  sizes="(max-width:768px) 50vw, 18vw"
                   className="object-cover"
                 />
               </div>

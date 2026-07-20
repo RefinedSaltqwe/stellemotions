@@ -327,7 +327,7 @@ const InquiryForm: React.FC = () => {
                       {...field}
                       rows={7}
                       className="resize-none"
-                      placeholder="Tell us about your story, venue, wedding plans, timeline, guest count, or anything you'd like us to know."
+                      placeholder="Tell us about your wedding, your vision, and anything you'd like us to know."
                     />
 
                     <InputGroupAddon align="block-end">

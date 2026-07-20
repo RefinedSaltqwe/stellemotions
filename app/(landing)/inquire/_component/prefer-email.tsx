@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { EnvelopeSimpleIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 import React from "react";
 
@@ -16,7 +15,6 @@ const PreferEmail: React.FC = () => {
           href="mailto:stellemotions@gmail.com"
           className="mt-4 flex items-center gap-2 font-serif text-2xl transition-opacity hover:opacity-70"
         >
-          <EnvelopeSimpleIcon size={22} weight="regular" />
           stellemotions@gmail.com
         </a>
 
