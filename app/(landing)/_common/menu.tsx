@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
             textOrientation: "mixed",
           }}
         >
-          {site.name}
+          {new Array(3).fill(site.name).join(" ")}
         </span>
       </div>
       <div className="flex flex-row justify-end p-4">

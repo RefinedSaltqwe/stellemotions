@@ -8,7 +8,7 @@ const PreferEmail: React.FC = () => {
   return (
     <>
       <div className="flex flex-col items-center border py-8 px-4 text-center border-border/50">
-        <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">
+        <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Prefer email instead?
         </p>
 

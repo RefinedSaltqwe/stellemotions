@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type PricingProps = {
@@ -34,7 +35,7 @@ const Pricing: React.FC<PricingProps> = ({
       <div
         className={cn("flex items-center justify-between max-w-7xl", position)}
       >
-        <div className="w-full flex flex-col md:pr-10 gap-8 -translate-y-20 md:translate-0">
+        <div className="w-full flex flex-col  gap-8 -translate-y-20 md:translate-0 px-4">
           <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light font-serif tracking-tight uppercase">
             {title}
           </h1>
@@ -49,8 +50,10 @@ const Pricing: React.FC<PricingProps> = ({
             ))}
           </ul>
           <span className="text-xs">{price}</span>
-          <div className="gap-4">
-            <Button variant="default">Inquire Now</Button>
+          <div>
+            <Button asChild className="mt-14">
+              <Link href="/inquire">Inquire Now</Link>
+            </Button>
           </div>
         </div>
         <div className="w-full align-middle justify-center flex">

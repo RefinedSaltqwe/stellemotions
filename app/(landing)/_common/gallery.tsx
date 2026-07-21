@@ -9,7 +9,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
     <section className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-12">
         <div className="mb-20 max-w-2xl">
-          <p className="font-serif italic text-primary/70">{`Featured Collections`}</p>
+          <p className="font-serif italic text-primary/70">{`Featured Collection`}</p>
 
           <h2 className="mt-4 font-serif text-5xl lg:text-7xl leading-none text-primary">
             Stelle Snaps

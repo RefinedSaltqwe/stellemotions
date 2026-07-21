@@ -1,5 +1,5 @@
+import Socials from "@/components/socials";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import React from "react";
 
 type MenuListProps = {
@@ -12,11 +12,6 @@ const menuList = [
   { name: "Portfolio", link: "/portfolio" },
   { name: "Services", link: "/services" },
   { name: "Inquire", link: "/inquire" },
-];
-
-const socials = [
-  { name: "Instagram", link: "#" },
-  { name: "Facebook", link: "#" },
 ];
 
 const MenuList: React.FC<MenuListProps> = ({
@@ -44,18 +39,7 @@ const MenuList: React.FC<MenuListProps> = ({
       ))}
       {showSocial && (
         <div className="flex items-center justify-start mt-12">
-          {socials.map((item, index) => (
-            <Link
-              key={item.name}
-              href="#"
-              className={cn(
-                `px-4 uppercase text-sm hover:text-primary-foreground/80`,
-                index !== 0 ? "border-l border-white/50" : "",
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+          <Socials />
         </div>
       )}
     </>

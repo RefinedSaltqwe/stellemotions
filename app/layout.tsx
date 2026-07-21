@@ -1,10 +1,11 @@
+import { QueryProvider } from "@/components/providers/query-provider";
+import NextTopLoaderWrapper from "@/components/top-loader";
+import { Toaster } from "@/components/ui/sonner";
+import { site } from "@/constants";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import { QueryProvider } from "@/components/providers/query-provider";
-import { Toaster } from "@/components/ui/sonner";
-import { site } from "@/constants";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -41,7 +42,9 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <NextTopLoaderWrapper>{children}</NextTopLoaderWrapper>
+        </QueryProvider>
         <Toaster duration={5000} />
       </body>
     </html>

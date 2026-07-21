@@ -52,7 +52,7 @@ export const guidelines = [
   },
 
   {
-    title: "Collections",
+    title: "Team",
     description:
       "Every wedding collection includes two dedicated photographers for complete coverage.",
     icon: UsersThreeIcon,

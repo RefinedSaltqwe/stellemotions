@@ -3,6 +3,10 @@ export const site = {
   email: "stellemotions@gmail.com",
   city: "Regina",
   province: "Saskatchewan",
+  socials: [
+    { name: "Instagram", link: "https://www.instagram.com/stellemotions/" },
+    { name: "Facebook", link: "#" },
+  ],
 };
 
 export const MAX_SIZE = 10 * 1024 * 1024; // 10 MB

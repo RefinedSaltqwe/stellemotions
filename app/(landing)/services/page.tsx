@@ -24,7 +24,7 @@ const ServicesPage: React.FC = () => {
       <CTASimpleSection
         eyebrow="Your story starts here."
         title="LET'S TELL YOUR STORY"
-        buttonText="INQUIRE"
+        buttonText="INQUIRE NOW"
         buttonHref="/inquire"
       />
       <FAQSection />

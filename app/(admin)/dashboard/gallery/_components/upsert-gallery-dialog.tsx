@@ -366,7 +366,10 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
                     <Field data-invalid={fieldState.invalid}>
                       <FieldLabel>Description</FieldLabel>
 
-                      <Input {...field} placeholder="Wedding" />
+                      <Input
+                        {...field}
+                        placeholder="Wedding, Maternity, Lifestyle, Couple"
+                      />
 
                       {fieldState.invalid && (
                         <FieldError errors={[fieldState.error]} />
