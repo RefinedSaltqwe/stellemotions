@@ -172,7 +172,7 @@ export const faqs = [
   {
     question: "Do you travel for sessions and weddings?",
     answer:
-      "Yes! We're based in Regina, Saskatchewan, and are available for travel throughout Saskatchewan and beyond. Travel or accommodation fees may apply depending on the location.",
+      "Yes! We're based in Regina, Saskatchewan, and are available for travel throughout Canada. Travel or accommodation fees may apply depending on the location.",
   },
   {
     question: "What should we wear for our session?",
