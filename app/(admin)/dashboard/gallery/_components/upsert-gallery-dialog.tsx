@@ -37,12 +37,13 @@ import {
 } from "@/server/actions/upsert-collection/schema";
 import { Collection } from "@/server/actions/upsert-collection/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ImageIcon, ImagesIcon, XIcon } from "@phosphor-icons/react";
+import { ImageIcon, ImagesIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { upsertCollection } from "@/server/actions/upsert-collection";
+import { deleteCollection } from "@/server/actions/delete-collection";
 
 type UpsertGalleryDialogProps = {
   title: string;
@@ -128,6 +129,31 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
         });
       },
       onSettled: () => {},
+    });
+
+  const { mutate: mutateDeleteCollection, isPending: deletingCollection } =
+    useMutation({
+      mutationFn: deleteCollection,
+      onSuccess: async (data) => {
+        if (!data.success) return;
+
+        const imagesDeleted = await handleDialogClosed();
+
+        if (imagesDeleted?.some(({ success }) => success)) {
+          await queryClient.invalidateQueries({
+            queryKey: ["collections"],
+          });
+        }
+
+        toast.success("Success", {
+          description: data.message,
+        });
+      },
+      onError: (error: Error) => {
+        toast.error("Deletion failed", {
+          description: error.message,
+        });
+      },
     });
 
   const { mutateAsync: uploadImageMutation, isPending: isUploading } =
@@ -238,10 +264,9 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
         promises.push(deleteImageMutation(image.path));
         setImage(null);
       }
-
-      await Promise.all(promises);
-
       form.reset();
+
+      return await Promise.all(promises);
     } catch (error) {
       console.error(error);
     }
@@ -521,19 +546,43 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
             </FieldGroup>
 
             <DialogFooter>
-              <DialogClose asChild>
-                <Button type="button" variant="outline">
-                  Cancel
-                </Button>
-              </DialogClose>
+              <div className="flex md:flex-row justify-between w-full flex-col-reverse gap-2">
+                <div>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    disabled={deletingCollection}
+                    onClick={() => {
+                      if (!collection?.id) return;
 
-              <Button
-                type="submit"
-                form="booking-inquiry-form"
-                disabled={upsertingGallery || isUploading}
-              >
-                {upsertingGallery ? <Spinner /> : title}
-              </Button>
+                      const confirmed = window.confirm(
+                        "Are you sure you want to delete this collection? This action cannot be undone.",
+                      );
+
+                      if (!confirmed) return;
+
+                      mutateDeleteCollection({ id: collection.id });
+                    }}
+                  >
+                    <TrashIcon className="h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="flex flex-row gap-2">
+                  <DialogClose asChild>
+                    <Button type="button" variant="outline">
+                      Cancel
+                    </Button>
+                  </DialogClose>
+
+                  <Button
+                    type="submit"
+                    form="booking-inquiry-form"
+                    disabled={upsertingGallery || isUploading}
+                  >
+                    {upsertingGallery ? <Spinner /> : title}
+                  </Button>
+                </div>
+              </div>
             </DialogFooter>
           </form>
         </div>

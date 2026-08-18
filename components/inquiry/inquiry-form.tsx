@@ -320,14 +320,14 @@ const InquiryForm: React.FC = () => {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Tell Us About Your Day</FieldLabel>
+                  <FieldLabel>Tell Us About Your Event</FieldLabel>
 
                   <InputGroup>
                     <InputGroupTextarea
                       {...field}
                       rows={7}
                       className="resize-none"
-                      placeholder="Tell us about your wedding, your vision, and anything you'd like us to know."
+                      placeholder="Tell us about your event, your vision, and anything you'd like us to know."
                     />
 
                     <InputGroupAddon align="block-end">
