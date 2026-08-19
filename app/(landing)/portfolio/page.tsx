@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import Collection from "@/components/portfolio/collection";
 import Gallery from "../_common/gallery";
