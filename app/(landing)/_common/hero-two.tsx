@@ -22,9 +22,6 @@ const HeroTwo: React.FC<HeroTwoProps> = ({
       {/* Background Image */}
       <Image src={image} alt={title} fill priority className="object-cover" />
 
-      {/* Cinematic Overlay */}
-      <div className="absolute inset-0 bg-black/30" />
-
       {/* Subtle Bottom Gradient */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/40 to-transparent" />
 

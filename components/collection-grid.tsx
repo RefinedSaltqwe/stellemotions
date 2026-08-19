@@ -130,7 +130,7 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ type }) => {
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
 
-                <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-black/20" />
+                <div className="absolute inset-0 transition-colors duration-500 group-hover:bg-black/20" />
               </div>
 
               <div className="mt-6">
