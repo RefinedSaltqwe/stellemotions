@@ -36,7 +36,7 @@ export default function Hero() {
     <section className="relative h-screen overflow-hidden" ref={heroRef}>
       {/* Background Image */}
       <Image
-        src="/assets/images/stellemotions-hero.jpg"
+        src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/A7C06675-2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0E3QzA2Njc1LTIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzEwNzM1MiwiZXhwIjoyMTAyNDY3MzUyfQ.Jy4xtvh-k9Fx3nw0wWcGsVf37jSajObpKGEGy_s48Ts"
         alt="Hero"
         fill
         priority

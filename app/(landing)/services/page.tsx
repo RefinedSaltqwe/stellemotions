@@ -12,7 +12,7 @@ const ServicesPage: React.FC = () => {
   return (
     <>
       <HeroTwo
-        image="/assets/images/stellemotions-hero.jpg"
+        image="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/A7C05044.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0E3QzA1MDQ0LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcxMDc1NzQsImV4cCI6MjEwMjQ2NzU3NH0.vwBy8vHmPu0RgNY8IyK2ongWmTZmeK6ZRhe8W3EBJP0"
         title="Services & Pricing"
         className="h-[40vh]"
       />

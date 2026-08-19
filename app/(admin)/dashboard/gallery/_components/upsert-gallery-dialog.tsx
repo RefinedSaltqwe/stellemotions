@@ -195,7 +195,9 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
 
     try {
       // Process each file sequentially to handle large uploads gracefully
-      for (const [index, file] of Array.from(files).entries()) {
+      const orderedFiles = Array.from(files).reverse();
+
+      for (const [index, file] of orderedFiles.entries()) {
         if (file.size > MAX_SIZE) {
           toast.error(
             `${file.name} is ${(file.size / 1024 / 1024).toFixed(1)}MB.`,
@@ -227,7 +229,11 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
             },
           ]);
         } else {
-          setImage({ url: response.url, path: response.path, order: 0 });
+          setImage({
+            url: response.url,
+            path: response.path,
+            order: 0,
+          });
         }
       }
     } catch (error) {
@@ -548,24 +554,26 @@ const UpsertGalleryDialog: React.FC<UpsertGalleryDialogProps> = ({
             <DialogFooter>
               <div className="flex md:flex-row justify-between w-full flex-col-reverse gap-2">
                 <div>
-                  <Button
-                    type="button"
-                    variant="destructive"
-                    disabled={deletingCollection}
-                    onClick={() => {
-                      if (!collection?.id) return;
+                  {collection && (
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      disabled={deletingCollection}
+                      onClick={() => {
+                        if (!collection?.id) return;
 
-                      const confirmed = window.confirm(
-                        "Are you sure you want to delete this collection? This action cannot be undone.",
-                      );
+                        const confirmed = window.confirm(
+                          "Are you sure you want to delete this collection? This action cannot be undone.",
+                        );
 
-                      if (!confirmed) return;
+                        if (!confirmed) return;
 
-                      mutateDeleteCollection({ id: collection.id });
-                    }}
-                  >
-                    <TrashIcon className="h-4 w-4" />
-                  </Button>
+                        mutateDeleteCollection({ id: collection.id });
+                      }}
+                    >
+                      <TrashIcon className="h-4 w-4" />
+                    </Button>
+                  )}
                 </div>
                 <div className="flex flex-row gap-2">
                   <DialogClose asChild>
