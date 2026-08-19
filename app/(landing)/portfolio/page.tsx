@@ -1,29 +1,20 @@
-import Collection from "@/components/portfolio/collection";
 import React from "react";
-import CtaInquireOne from "../_common/cta-inquire-one";
-import HeroTwo from "../_common/hero-two";
+import Collection from "@/components/portfolio/collection";
 import Gallery from "../_common/gallery";
+import HeroTwo from "../_common/hero-two";
+import CtaInquireOne from "../_common/cta-inquire-one";
+import { getCollections } from "@/server/queries/collections";
 
-const images = [
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-1.jpg",
-  "/assets/images/couple-2.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-6.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-3.jpg",
-  "/assets/images/couple-4.jpg",
-  "/assets/images/couple-5.jpg",
-  "/assets/images/couple-6.jpg",
-];
+const PortfolioPage = async () => {
+  const collections = await getCollections();
 
-const PortfolioPage: React.FC = () => {
+  const uncategorizedCollection = collections.find(
+    (collection) => collection.title.trim().toLowerCase() === "uncategorized",
+  );
+
+  const images =
+    uncategorizedCollection?.gallery.map((image) => image.imageUrl) ?? [];
+
   return (
     <>
       <HeroTwo
@@ -31,10 +22,14 @@ const PortfolioPage: React.FC = () => {
         title="Portfolio"
         className="h-screen"
       />
+
       <Collection />
+
       <Gallery images={images} />
+
       <CtaInquireOne />
     </>
   );
 };
+
 export default PortfolioPage;

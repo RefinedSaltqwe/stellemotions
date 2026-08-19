@@ -15,12 +15,12 @@ const Collection: React.FC = () => {
 
       <CollectionGrid type="landing" />
 
-      <div className="mt-6 sm:hidden">
+      {/* <div className="mt-6 sm:hidden">
         <a href="#" className="block text-sm font-semibold ">
           Browse all collections
           <span aria-hidden="true"> &rarr;</span>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

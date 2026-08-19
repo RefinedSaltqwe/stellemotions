@@ -24,41 +24,74 @@ type CollectionGridProps = {
 const CollectionGrid: React.FC<CollectionGridProps> = ({ type }) => {
   const { data: collections, isLoading } = useQuery({
     queryKey: ["collections"],
-    queryFn: () => getCollections(),
+    queryFn: getCollections,
   });
 
   const [category, setCategory] = useState("All");
 
-  const categories = useMemo(() => {
-    if (!collections) return ["All"];
-
-    return [
-      "All",
-      ...Array.from(
-        new Map(
-          collections
-            .filter((collection) => collection.description?.trim())
-            .map((collection) => [
-              collection.description!.trim().toLowerCase(),
-              collection.description!.trim(),
-            ]),
-        ).values(),
-      ),
-    ];
+  /*
+   * Find Uncategorized separately.
+   */
+  const uncategorizedCollection = useMemo(() => {
+    return collections?.find(
+      (collection) => collection.title.trim().toLowerCase() === "uncategorized",
+    );
   }, [collections]);
 
-  const filteredCollections = useMemo(() => {
+  /*
+   * Remove Uncategorized from the normal collection list.
+   *
+   * This list is used for both dashboard and landing.
+   */
+  const normalCollections = useMemo(() => {
     if (!collections) return [];
 
-    if (category.toLowerCase() === "all") return collections;
-
     return collections.filter(
-      (collection) =>
-        collection.description?.trim().toLowerCase() ===
-        category.trim().toLowerCase(),
+      (collection) => collection.title.trim().toLowerCase() !== "uncategorized",
     );
-  }, [collections, category]);
+  }, [collections]);
 
+  /*
+   * Get categories from normal collections only.
+   */
+  const categories = useMemo(() => {
+    const categoryMap = new Map<string, string>();
+
+    for (const collection of normalCollections) {
+      const description = collection.description?.trim();
+
+      if (!description) continue;
+
+      const key = description.toLowerCase();
+
+      if (!categoryMap.has(key)) {
+        categoryMap.set(key, description);
+      }
+    }
+
+    return ["All", ...categoryMap.values()];
+  }, [normalCollections]);
+
+  /*
+   * Filter normal collections.
+   * Uncategorized can never appear here.
+   */
+  const filteredCollections = useMemo(() => {
+    const normalizedCategory = category.trim().toLowerCase();
+
+    if (normalizedCategory === "all") {
+      return normalCollections;
+    }
+
+    return normalCollections.filter(
+      (collection) =>
+        collection.description?.trim().toLowerCase() === normalizedCategory,
+    );
+  }, [normalCollections, category]);
+
+  /*
+   * Loading
+   */
   if (isLoading) {
     return (
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -76,6 +109,9 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ type }) => {
     );
   }
 
+  /*
+   * No collections at all.
+   */
   if (!collections?.length) {
     return (
       <div className="mt-16 text-center text-muted-foreground">
@@ -84,8 +120,54 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ type }) => {
     );
   }
 
+  /*
+   * Dashboard card.
+   */
+  const dashboardCard = (collection: (typeof collections)[number]) => (
+    <div className="group relative aspect-2/1 overflow-hidden">
+      <Image
+        fill
+        alt={collection.title}
+        src={collection.heroImageUrl}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+      />
+
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+
+      <div className="absolute inset-0 flex cursor-pointer items-end p-6">
+        <div>
+          <h3 className="font-serif font-semibold text-white">
+            <span className="absolute inset-0" />
+            {collection.title}
+          </h3>
+
+          <p aria-hidden="true" className="mt-1 text-sm text-white/90">
+            {collection.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  /*
+   * Dashboard collection card + dialog.
+   */
+  const dashboardCollection = (collection: (typeof collections)[number]) => (
+    <UpsertGalleryDialog
+      key={collection.id}
+      title="Edit Collection"
+      description="Edit collection and images"
+      collection={collection}
+      collectionId={collection.id}
+    >
+      <div className="cursor-pointer">{dashboardCard(collection)}</div>
+    </UpsertGalleryDialog>
+  );
+
   return (
     <>
+      {/* LANDING CATEGORY FILTER */}
       {type === "landing" && (
         <div className="mb-10 flex justify-end">
           <Select value={category} onValueChange={setCategory}>
@@ -104,97 +186,97 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ type }) => {
         </div>
       )}
 
-      <div
-        className={cn(
-          "grid gap-x-4 sm:grid-cols-2 lg:grid-cols-3",
-          type === "dashboard" ? "gap-y-4" : "gap-y-16",
+      {/* NORMAL COLLECTIONS */}
+      <section>
+        {type === "dashboard" && (
+          <div className="mb-6">
+            <h2 className="font-serif text-3xl">Collections</h2>
+
+            <p className="mt-1 text-sm text-muted-foreground">
+              Manage your photography collections.
+            </p>
+          </div>
         )}
-      >
-        {filteredCollections.length === 0 && (
+
+        {filteredCollections.length === 0 ? (
           <div className="mt-16 text-center text-muted-foreground">
             No collections found.
           </div>
+        ) : (
+          <div
+            className={cn(
+              "grid gap-x-4 sm:grid-cols-2 lg:grid-cols-3",
+              type === "dashboard" ? "gap-y-4" : "gap-y-16",
+            )}
+          >
+            {filteredCollections.map((collection) => {
+              /*
+               * Dashboard
+               */
+              if (type === "dashboard") {
+                return dashboardCollection(collection);
+              }
+
+              /*
+               * Landing
+               */
+              return (
+                <Link
+                  key={collection.id}
+                  href={`/portfolio/collection/${collection.id}`}
+                  className="block"
+                >
+                  <article className="group">
+                    <div className="relative aspect-4/5 overflow-hidden bg-muted">
+                      <Image
+                        src={collection.heroImageUrl}
+                        alt={collection.title}
+                        fill
+                        quality={70}
+                        sizes="
+                          (max-width: 640px) 100vw,
+                          (max-width: 1024px) 50vw,
+                          33vw
+                        "
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+
+                      <div className="absolute inset-0 transition-colors duration-500 group-hover:bg-black/20" />
+                    </div>
+
+                    <div className="mt-6">
+                      <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+                        {collection.description}
+                      </p>
+
+                      <h3 className="mt-2 font-serif text-3xl leading-none">
+                        {collection.title}
+                      </h3>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
+          </div>
         )}
-        {filteredCollections.map((collection) => {
-          const Card = (
-            <article className="group">
-              <div className="relative aspect-4/5 overflow-hidden bg-muted">
-                <Image
-                  src={collection.heroImageUrl}
-                  alt={collection.title}
-                  fill
-                  quality={70}
-                  sizes="(max-width:640px) 100vw,
-                         (max-width:1024px) 50vw,
-                         33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
+      </section>
 
-                <div className="absolute inset-0 transition-colors duration-500 group-hover:bg-black/20" />
-              </div>
+      {/* UNCATEGORIZED - DASHBOARD ONLY */}
+      {type === "dashboard" && uncategorizedCollection && (
+        <section className="mt-16">
+          <div className="mb-6">
+            <h2 className="font-serif text-3xl">Uncategorized</h2>
 
-              <div className="mt-6">
-                <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
-                  {collection.description}
-                </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Images that are not assigned to a collection.
+            </p>
+          </div>
 
-                <h3 className="mt-2 font-serif text-3xl leading-none">
-                  {collection.title}
-                </h3>
-              </div>
-            </article>
-          );
-
-          const DashboardCard = (
-            <div
-              key={collection.id}
-              className="group relative aspect-2/1 overflow-hidden"
-            >
-              <Image
-                fill
-                alt={collection.title}
-                src={collection.heroImageUrl}
-                className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-
-              <div className="absolute inset-0 flex cursor-pointer items-end p-6">
-                <div>
-                  <h3 className="font-serif font-semibold text-white">
-                    <span className="absolute inset-0" />
-                    {collection.title}
-                  </h3>
-
-                  <p aria-hidden="true" className="mt-1 text-sm text-white/90">
-                    {collection.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-
-          return type === "dashboard" ? (
-            <UpsertGalleryDialog
-              key={collection.id}
-              title="Edit Collection"
-              description="Edit collection and images"
-              collection={collection}
-              collectionId={collection.id}
-            >
-              <div className="cursor-pointer">{DashboardCard}</div>
-            </UpsertGalleryDialog>
-          ) : (
-            <Link
-              key={collection.id}
-              href={`/portfolio/collection/${collection.id}`}
-              className="block"
-            >
-              {Card}
-            </Link>
-          );
-        })}
-      </div>
+          <div className="grid gap-x-4 sm:grid-cols-2 lg:grid-cols-3">
+            {dashboardCollection(uncategorizedCollection)}
+          </div>
+        </section>
+      )}
     </>
   );
 };
