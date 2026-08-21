@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
 import GalleryModal from "./gallery-modal";
 
 type Props = {
@@ -15,8 +16,12 @@ type GalleryImage = {
 };
 
 const GAP = 16;
+
 const MOBILE_BREAKPOINT = 640;
 const TABLET_BREAKPOINT = 1024;
+
+const INITIAL_LOAD_COUNT = 6;
+const LOAD_BATCH_SIZE = 6;
 
 const getTargetHeight = (width: number) => {
   if (width < MOBILE_BREAKPOINT) return 220;
@@ -24,70 +29,140 @@ const getTargetHeight = (width: number) => {
   return 350;
 };
 
+/**
+ * Load the natural dimensions of ONE image.
+ *
+ * This is only used to determine the aspect ratio.
+ * It is intentionally not Promise.all()'d for the entire gallery.
+ */
+const loadImageRatio = (src: string, index: number): Promise<GalleryImage> => {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+
+    img.onload = () => {
+      const ratio =
+        img.naturalHeight > 0 ? img.naturalWidth / img.naturalHeight : 1;
+
+      resolve({
+        src,
+        index,
+        ratio,
+      });
+    };
+
+    img.onerror = () => {
+      resolve({
+        src,
+        index,
+        ratio: 1,
+      });
+    };
+
+    img.src = src;
+  });
+};
+
 export default function GalleryGrid({ images }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
   const [containerWidth, setContainerWidth] = useState(0);
-  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
 
-  /*
-   * Load image dimensions.
+  /**
+   * Stores only the image ratios that we have discovered.
    *
-   * We use the natural dimensions only to determine
-   * the correct aspect ratio for the justified layout.
+   * Example:
+   *
+   * {
+   *   0: 0.67,
+   *   1: 1.5,
+   *   2: 0.8,
+   * }
    */
-  const loadImage = useCallback(
-    (src: string, index: number): Promise<GalleryImage> =>
-      new Promise((resolve) => {
-        const img = new window.Image();
+  const [ratios, setRatios] = useState<Record<number, number>>({});
 
-        img.onload = () => {
-          resolve({
-            src,
-            index,
-            ratio: img.naturalWidth / img.naturalHeight,
-          });
-        };
+  /**
+   * Number of images whose dimensions we have requested.
+   */
+  const [loadedCount, setLoadedCount] = useState(0);
 
-        img.onerror = () => {
-          resolve({
-            src,
-            index,
-            ratio: 1,
-          });
-        };
-
-        img.src = src;
-      }),
-    [],
-  );
-
-  /*
-   * Load all image ratios whenever the image list changes.
+  /**
+   * Reset when the gallery changes.
    */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setRatios({});
+    setLoadedCount(0);
+  }, [images]);
+
+  /**
+   * Progressively load image dimensions.
+   *
+   * Instead of:
+   *
+   *     Promise.all(ALL images)
+   *
+   * we load a small batch at a time.
+   *
+   * This means the browser does not immediately try to
+   * inspect every single gallery image.
+   */
+  useEffect(() => {
+    if (!images.length) return;
+
     let cancelled = false;
 
-    const loadImages = async () => {
-      const result = await Promise.all(
-        images.map((src, index) => loadImage(src, index)),
+    const startIndex = loadedCount;
+
+    if (startIndex >= images.length) {
+      return;
+    }
+
+    /**
+     * First batch:
+     * 6 images
+     *
+     * Subsequent batches:
+     * another 6 images
+     */
+    const batchSize = startIndex === 0 ? INITIAL_LOAD_COUNT : LOAD_BATCH_SIZE;
+
+    const endIndex = Math.min(startIndex + batchSize, images.length);
+
+    const loadBatch = async () => {
+      const batch = images.slice(startIndex, endIndex);
+
+      const results = await Promise.all(
+        batch.map((src, batchIndex) =>
+          loadImageRatio(src, startIndex + batchIndex),
+        ),
       );
 
-      if (!cancelled) {
-        setGalleryImages(result);
-      }
+      if (cancelled) return;
+
+      setRatios((previous) => {
+        const next = { ...previous };
+
+        for (const image of results) {
+          next[image.index] = image.ratio;
+        }
+
+        return next;
+      });
+
+      setLoadedCount(endIndex);
     };
 
-    loadImages();
+    loadBatch();
 
     return () => {
       cancelled = true;
     };
-  }, [images, loadImage]);
+  }, [images, loadedCount]);
 
-  /*
-   * Observe the gallery width.
+  /**
+   * Observe gallery width.
    */
   useEffect(() => {
     const element = containerRef.current;
@@ -113,14 +188,40 @@ export default function GalleryGrid({ images }: Props) {
     };
   }, []);
 
-  /*
-   * Build the justified rows.
+  /**
+   * Only use images whose aspect ratios are known.
    *
-   * Images are always processed in their original order:
+   * This lets us progressively build the gallery.
+   */
+  const galleryImages = useMemo<GalleryImage[]>(() => {
+    return images
+      .map((src, index) => {
+        const ratio = ratios[index];
+
+        if (!ratio) {
+          return null;
+        }
+
+        return {
+          src,
+          index,
+          ratio,
+        };
+      })
+      .filter((image): image is GalleryImage => image !== null);
+  }, [images, ratios]);
+
+  /**
+   * Build justified rows.
+   *
+   * The order is always:
    *
    * 1  2  3
-   * 4  5  6
-   * 7  8  9
+   * 4  5
+   * 6  7
+   * 8  9  10
+   *
+   * Never masonry-style column ordering.
    */
   const rows = useMemo(() => {
     if (!containerWidth || !galleryImages.length) {
@@ -128,6 +229,7 @@ export default function GalleryGrid({ images }: Props) {
     }
 
     const isMobile = containerWidth < MOBILE_BREAKPOINT;
+
     const isTablet =
       containerWidth >= MOBILE_BREAKPOINT && containerWidth < TABLET_BREAKPOINT;
 
@@ -136,16 +238,18 @@ export default function GalleryGrid({ images }: Props) {
     let currentRow: GalleryImage[] = [];
 
     for (const image of galleryImages) {
-      /*
-       * Mobile: exactly 2 images per row.
+      /**
+       * Mobile:
+       * maximum 2 images per row.
        */
       if (isMobile && currentRow.length === 2) {
         rows.push(currentRow);
         currentRow = [];
       }
 
-      /*
-       * Tablet: maximum 3 images per row.
+      /**
+       * Tablet:
+       * maximum 3 images per row.
        */
       if (isTablet && currentRow.length === 3) {
         rows.push(currentRow);
@@ -162,12 +266,13 @@ export default function GalleryGrid({ images }: Props) {
 
       const targetHeight = getTargetHeight(containerWidth);
 
-      /*
-       * If the new image makes the row too short,
-       * start a new row.
+      /**
+       * If adding this image makes the row too short,
+       * finalize the current row.
        */
       if (currentRow.length > 0 && calculatedHeight < targetHeight) {
         rows.push(currentRow);
+
         currentRow = [image];
       } else {
         currentRow = testRow;
@@ -181,10 +286,33 @@ export default function GalleryGrid({ images }: Props) {
     return rows;
   }, [containerWidth, galleryImages]);
 
+  /**
+   * Important:
+   *
+   * The images in your gallery don't occupy 100vw.
+   *
+   * Using 100vw can make Next.js request larger images
+   * than necessary.
+   */
+  const imageSizes =
+    "(max-width: 639px) 50vw, " + "(max-width: 1023px) 33vw, " + "25vw";
+
+  const hasImages = images.length > 0;
+
+  const hasLoadedImages = galleryImages.length > 0;
+
+  const allRatiosLoaded = loadedCount >= images.length;
+
   return (
     <>
       <div ref={containerRef} className="w-full">
-        {!galleryImages.length ? (
+        {!hasImages ? null : !hasLoadedImages ? (
+          /**
+           * Initial loading state.
+           *
+           * We only show this briefly while the first batch
+           * of image dimensions is being discovered.
+           */
           <div className="grid grid-cols-2 gap-4">
             {images.map((image, index) => (
               <div
@@ -210,12 +338,20 @@ export default function GalleryGrid({ images }: Props) {
                   {row.map((image) => {
                     const width = image.ratio * rowHeight;
 
+                    /**
+                     * Only the first few images are expected
+                     * to be above the fold.
+                     *
+                     * Everything else can lazy-load.
+                     */
+                    const isPriority = image.index < 4;
+
                     return (
                       <button
                         key={`${image.src}-${image.index}`}
                         type="button"
                         onClick={() => setSelectedIndex(image.index)}
-                        className="group relative shrink-0 overflow-hidden cursor-pointer"
+                        className="group relative shrink-0 cursor-pointer overflow-hidden"
                         style={{
                           width,
                           height: rowHeight,
@@ -225,8 +361,9 @@ export default function GalleryGrid({ images }: Props) {
                           src={image.src}
                           alt=""
                           fill
-                          sizes="100vw"
-                          loading="lazy"
+                          sizes={imageSizes}
+                          priority={isPriority}
+                          loading={isPriority ? "eager" : "lazy"}
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                       </button>
@@ -235,6 +372,7 @@ export default function GalleryGrid({ images }: Props) {
                 </div>
               );
             })}
+            {!allRatiosLoaded && <div className="h-4" aria-hidden="true" />}
           </div>
         )}
       </div>
