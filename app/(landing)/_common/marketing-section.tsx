@@ -63,7 +63,7 @@ const MarketingSection: React.FC = () => {
           <div className="col-span-8 col-start-5 sm:col-span-7 sm:col-start-5 md:col-span-6 md:col-start-6 mt-10">
             <div className="relative aspect-4/3 w-full">
               <Image
-                src="/assets/images/couple-2.jpg"
+                src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/250323-151421-A7C03911%20(1).jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzI1MDMyMy0xNTE0MjEtQTdDMDM5MTEgKDEpLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODczMzIxOTEsImV4cCI6MjEwMjY5MjE5MX0.fS0XgmVdpw9GzNCeKVDqoVr_f9eV-3senefQrOUqBhk"
                 alt=""
                 fill
                 sizes="(max-width: 640px) 67vw,
@@ -79,7 +79,7 @@ const MarketingSection: React.FC = () => {
             <div className="relative">
               <div className="relative aspect-4/5 w-full">
                 <Image
-                  src="/assets/images/couple-3.jpg"
+                  src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/DSC00172.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0RTQzAwMTcyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODczMzM0MTMsImV4cCI6MjEwMjY5MzQxM30.9CHvENHyb23Ba80Fcimar-hAuKYPvi3jdJ12jgJkR7s"
                   alt=""
                   fill
                   sizes="(max-width: 768px) 50vw, 50vw"
@@ -90,7 +90,7 @@ const MarketingSection: React.FC = () => {
               {/* Floating Small Image */}
               <div className="absolute -left-10 md:-left-20 -bottom-20 md:bottom-10 h-50 w-34 md:h-64 md:w-48 shadow-lg">
                 <Image
-                  src="/assets/images/couple-4.jpg"
+                  src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/221010-171649-A7302672.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzIyMTAxMC0xNzE2NDktQTczMDI2NzIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzMzMzYyNywiZXhwIjoyMTAyNjkzNjI3fQ.ddxO_aChPvOYsdaY5sOpV7DQJJ7nBAu8CBwWMwE6G2I"
                   alt=""
                   fill
                   sizes="192px"
@@ -152,7 +152,7 @@ const MarketingSection: React.FC = () => {
             <div className="flex gap-6 items-end">
               <div className="relative h-72 w-[50%]">
                 <Image
-                  src="/assets/images/couple-5.jpg"
+                  src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/221010-171625-A7302663.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzIyMTAxMC0xNzE2MjUtQTczMDI2NjMuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzMzNjgzNSwiZXhwIjoyMTAyNjk2ODM1fQ.mV3zZAQ1LCXXSa_sqMo5X4X79h21EH1Ck8hBxI1_WUA"
                   alt=""
                   fill
                   sizes="(max-width:768px) 50vw, 18vw"
@@ -162,7 +162,7 @@ const MarketingSection: React.FC = () => {
 
               <div className="relative h-72 w-[50%]">
                 <Image
-                  src="/assets/images/couple-6.jpg"
+                  src="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/221010-183240-A7303513.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzIyMTAxMC0xODMyNDAtQTczMDM1MTMuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzMzMzUwNSwiZXhwIjoyMTAyNjkzNTA1fQ._X2eyt5V93S6vp9yVlySk591H3bV6wxLr1twhIp4Ogg"
                   alt=""
                   fill
                   sizes="(max-width:768px) 50vw, 18vw"
