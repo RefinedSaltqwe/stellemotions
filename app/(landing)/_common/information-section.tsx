@@ -12,8 +12,8 @@ const InformationSection: React.FC<InformationSectionProps> = () => {
         <Heading
           textColor="blackMuted"
           eyebrow="Information"
-          title="These are the moments you'll hold onto forever."
-          description="Your story is one of a kind. We are here to capture it honestly, so you can relive it for years to come."
+          title="Photography for the moments that matter."
+          description="Your story is one of a kind. We're here to capture it honestly, beautifully, and intentionally, creating photographs you'll return to for years to come."
         />
       </div>
     </div>

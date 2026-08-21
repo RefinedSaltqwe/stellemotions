@@ -55,7 +55,7 @@ export const services = [
 
 export const pricingData = [
   {
-    title: "Wedding (Full day coverage)",
+    title: "Full Day Wedding",
     description:
       'From the quiet moments before "I do" to the celebration on the dance floor, this collection is designed to preserve your entire wedding story with care and intention.',
     list: "Up to 12 Hours of Wedding Day Coverage, 2 Photographers, Unlimited Shots, 500+ Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Downloads, Final Gallery Delivered Within 2–4 Weeks, Travel & Accommodation Fees Apply for Destination Weddings",
@@ -67,7 +67,7 @@ export const pricingData = [
     imagePosition: undefined,
   },
   {
-    title: "Wedding (Half day coverage)",
+    title: "Half Day Wedding",
     description:
       "Perfect for intimate celebrations and shorter wedding days, this collection focuses on the moments that matter most, from your ceremony to portraits and the beginning of your celebration.",
     list: "Up to 6 Hours of Wedding Day Coverage, 2 Photographers, Unlimited Shots, 300+ Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Downloads, Final Gallery Delivered Within 2–4 Weeks, Travel & Accommodation Fees Apply for Destination Weddings",

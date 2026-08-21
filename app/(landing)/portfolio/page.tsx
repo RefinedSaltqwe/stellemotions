@@ -21,6 +21,7 @@ const PortfolioPage = async () => {
       <HeroTwo
         image="https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/DSC09263-2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0RTQzA5MjYzLTIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzEwNzg1MSwiZXhwIjoyMTAyNDY3ODUxfQ.2gN8qPGkmceriWoWJrgD0ob6O2fgA4_T2oFeI6Y4PT0"
         title="Portfolio"
+        description="THE STORIES WE'VE TOLD"
         className="h-screen"
       />
 
