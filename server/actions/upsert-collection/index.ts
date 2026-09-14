@@ -8,6 +8,7 @@ import { collectionSchema, type CollectionSchema } from "./schema";
 
 export async function upsertCollection(data: CollectionSchema) {
   const parsed = collectionSchema.safeParse(data);
+  const temp_id = "00000-XXX-X-0";
 
   if (!parsed.success) {
     const errors = z.flattenError(parsed.error);
@@ -22,7 +23,7 @@ export async function upsertCollection(data: CollectionSchema) {
   try {
     const collection = await db.$transaction(async (tx) => {
       const collection = await tx.collection.upsert({
-        where: data.id ? { id: data.id } : { id: "00000-XXX-X-0" },
+        where: data.id ? { id: data.id } : { id: temp_id },
         update: {
           title: parsed.data.title,
           description: parsed.data.description,
