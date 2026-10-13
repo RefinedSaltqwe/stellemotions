@@ -15,11 +15,15 @@ export default function FAQSection() {
     <section className="bg-secondary py-24">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="hidden md:block">
-          <Heading textColor="black" title="Frequently Asked Questions" />
+          <Heading
+            textColor="black"
+            title="Frequently Asked Questions"
+            textCenter={false}
+          />
         </div>
 
         <div className="block md:hidden">
-          <Heading textColor="black" title="FAQs" />
+          <Heading textColor="black" title="FAQs" textCenter={false} />
         </div>
 
         <Accordion type="single" collapsible className="mt-16 w-full">

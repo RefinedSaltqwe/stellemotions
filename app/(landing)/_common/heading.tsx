@@ -27,6 +27,7 @@ type HeadingProps = {
   title: string;
   eyebrow?: string;
   description?: string;
+  textCenter?: boolean;
 };
 
 const Heading: React.FC<HeadingProps> = ({
@@ -34,9 +35,10 @@ const Heading: React.FC<HeadingProps> = ({
   title,
   eyebrow,
   description,
+  textCenter = true,
 }) => {
   return (
-    <div className="mx-auto max-w-3xl text-center">
+    <div className={cn("mx-auto", textCenter && "text-center max-w-3xl")}>
       {eyebrow && (
         <p
           className={cn(
