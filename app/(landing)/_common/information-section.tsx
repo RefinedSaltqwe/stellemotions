@@ -11,9 +11,9 @@ const InformationSection: React.FC<InformationSectionProps> = () => {
       <div className="flex w-full flex-col text-center items-center justify-center gap-8 max-w-3xl mx-auto px-8 py-38">
         <Heading
           textColor="blackMuted"
-          eyebrow="Information"
-          title="Photography for the moments that matter."
-          description="Your story is one of a kind. We're here to capture it honestly, beautifully, and intentionally, creating photographs you'll return to for years to come."
+          eyebrow="OUR APPROACH"
+          title="Every story deserves to be remembered."
+          description="No two celebrations or seasons of life are the same. We take the time to understand what matters to you, creating photographs that feel natural, personal, and true to your story."
         />
       </div>
     </div>

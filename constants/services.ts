@@ -134,24 +134,24 @@ export const slides: StorySlide[] = [
 
 export const processGuide = [
   {
-    title: "Get in Touch",
+    title: "Let's Talk",
     description:
-      "Reach out to us via our contact form or email to discuss your photography needs and vision.",
+      "Tell us about your wedding, your plans, or the moments you'd love to remember. We'll discuss your vision, availability, and the collection that best fits your needs.",
   },
   {
-    title: "Meet & Plan",
+    title: "Let's Make a Plan",
     description:
-      "We'll schedule a consultation to get to know you, your story, and your photography goals. We'll discuss locations, styles, and any specific shots you want.",
+      "Once you're ready to move forward, we'll take care of the booking details and talk through locations, timing, and anything that will help you feel prepared.",
   },
   {
     title: "Your Day",
     description:
-      "On the day of your session or event, we'll capture every moment with care and creativity, ensuring you feel comfortable and natural in front of the camera.",
+      "When the day arrives, enjoy it. We'll document the meaningful moments as they unfold and gently guide you whenever you need a little direction.",
   },
   {
     title: "Gallery Delivery",
     description:
-      "After editing and curating your images, we'll provide you with a private online gallery to view, download, and share your photos.",
+      "We'll carefully edit your photographs and deliver them through your private online gallery, ready for you to view, download, and share.",
   },
   // {
   //   title: "Memories Forever",
