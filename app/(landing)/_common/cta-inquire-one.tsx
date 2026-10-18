@@ -31,7 +31,9 @@ const CtaInquireOne: React.FC<CtaInquireOneProps> = ({
         </div>
         <div className="w-full align-middle justify-center flex">
           <Image
-            src={"/assets/images/couple-2.jpg"}
+            src={
+              "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/homepage_picture_04.jpg?token=eyJraWQiOiIzZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL2hvbWVwYWdlX3BpY3R1cmVfMDQuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjM1OTkzOSwiZXhwIjoyMTA3NzE5OTM5fQ.01N-MISHx7etR7dF6McJin5EL5ly7vY9TdFHmEGiwI8"
+            }
             alt=""
             width={400}
             height={800}
