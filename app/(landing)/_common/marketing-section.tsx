@@ -125,9 +125,9 @@ const MarketingSection: React.FC = () => {
             <div className="relative z-10 space-y-4">
               {quickLinks.map((link, index) => {
                 const images = [
-                  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80",
-                  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80",
-                  "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80",
+                  "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/homepage_picture_01.jpg?token=eyJraWQiOiIzZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL2hvbWVwYWdlX3BpY3R1cmVfMDEuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjM1OTczOCwiZXhwIjoxMTYzMTU5MTczOH0.VpEoSb4I3i1Aw5n2UsYIWZI-WRF63eXtIhqEonjqNp0",
+                  "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/homepage_picture_02.jpg?token=eyJraWQiOiIzZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL2hvbWVwYWdlX3BpY3R1cmVfMDIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjM1OTc1NywiZXhwIjoyMTA3NzE5NzU3fQ.odagm_gVsjFxaA7L7du-WUiVhAMtoSxXkW9VunAXNt0",
+                  "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/homepage_picture_03.jpg?token=eyJraWQiOiIzZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL2hvbWVwYWdlX3BpY3R1cmVfMDMuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjM1OTc3MiwiZXhwIjoyMTA3NzE5NzcyfQ.h2FV6cpeTZnNVI2qv8ABarPvLOEQ-7IX0upjdhRcKfA",
                 ];
 
                 return (
