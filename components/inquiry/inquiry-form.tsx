@@ -326,18 +326,28 @@ const InquiryForm: React.FC = () => {
                     <InputGroupTextarea
                       {...field}
                       rows={7}
+                      id="form-message"
                       className="resize-none"
                       placeholder="Tell us about your event, your vision, and anything you'd like us to know."
                     />
 
-                    <InputGroupAddon align="block-end">
+                    <InputGroupAddon
+                      align="block-end"
+                      onClick={() =>
+                        document.getElementById("form-message")?.focus()
+                      }
+                    >
                       <InputGroupText>
                         {(field.value ?? "").length}/1000
                       </InputGroupText>
                     </InputGroupAddon>
                   </InputGroup>
 
-                  <FieldDescription>
+                  <FieldDescription
+                    onClick={() =>
+                      document.getElementById("form-message")?.focus()
+                    }
+                  >
                     {`We'd love to hear about your vision and what matters most to
                     you.`}
                   </FieldDescription>

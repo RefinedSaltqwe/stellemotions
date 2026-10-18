@@ -41,14 +41,14 @@ const MarketingSection: React.FC = () => {
 
           {/* Top Right Text */}
           <div className="col-span-7 md:col-span-5 md:col-start-6">
+            <h2 className="font-serif text-3xl md:text-4xl mb-4 font-medium">
+              A Little About Us
+            </h2>
             <p className="max-w-md leading-relaxed text-foreground md:text-xl">
-              <span className="font-semibold uppercase">
+              <span className="font-semibold capitalize">
                 We Are {site.name},
               </span>{" "}
-              {`a husband-and-wife photography team based
-              in Regina, Saskatchewan. We capture genuine moments, meaningful
-              connections, and life's most memorable milestones through soft,
-              cinematic imagery that feels timeless and true.`}
+              {`a husband-and-wife photography team based in Regina, Saskatchewan. We love capturing real moments, happy tears, laughter, and the little things that make your story special. Our goal is to create natural, timeless photos that help you remember how those moments felt.`}
             </p>
           </div>
 
@@ -114,36 +114,66 @@ const MarketingSection: React.FC = () => {
           </div>
 
           {/* Editorial Quick Links */}
-          <div className="col-span-12 md:col-span-6 mt-24 md:pb-20">
-            <div className="col-span-12 relative">
-              <h2 className="font-serif left-30 sm:left-40 text-center text-6xl md:text-9xl leading-none text-primary absolute -top-23 lg:-top-20">
-                DEEPLY
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {quickLinks.map((link, index) => (
-                <Link
-                  key={`${index}-${link.title}`}
-                  href={link.href}
-                  className="group flex items-center justify-between border border-primary/15 bg-primary-foreground/20 px-6 py-3 backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                >
-                  <div>
-                    <p className="text-[10px] font-serif uppercase tracking-[0.35em] text-foreground/60 group-hover:text-white/60">
-                      {`0${index + 1}`}
-                    </p>
+          {/* Editorial Quick Links */}
+          <div className="col-span-12 md:col-span-6 relative mt-24 pb-16 md:pb-20">
+            {/* Oversized Editorial Heading */}
+            <h2 className="pointer-events-none absolute -top-16 right-0 z-0 font-serif text-7xl leading-none tracking-tight text-primary sm:text-8xl md:-top-24 md:text-9xl">
+              DEEPLY
+            </h2>
 
-                    <h3 className="mt-2 font-serif text-2xl">{link.title}</h3>
+            {/* Navigation Cards */}
+            <div className="relative z-10 space-y-4">
+              {quickLinks.map((link, index) => {
+                const images = [
+                  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80",
+                  "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80",
+                ];
 
-                    <p className="mt-1 text-xs tracking-wide opacity-70">
-                      {link.description}
-                    </p>
-                  </div>
+                return (
+                  <Link
+                    key={`${index}-${link.title}`}
+                    href={link.href}
+                    className="group grid grid-cols-[96px_minmax(0,1fr)_40px] items-center gap-4 border border-primary/15 bg-[#E7E0D2]/95 p-3 backdrop-blur-sm transition-all duration-500 hover:border-primary/35 hover:bg-[#F0EADF] sm:grid-cols-[140px_minmax(0,1fr)_52px] sm:gap-6 sm:p-4 md:grid-cols-[160px_minmax(0,1fr)_56px]"
+                  >
+                    {/* Photography Thumbnail */}
+                    <div className="relative aspect-4/5 overflow-hidden bg-primary/10">
+                      <Image
+                        src={images[index % images.length]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 640px) 96px, (max-width: 768px) 140px, 160px"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
 
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 group-hover:translate-x-1 group-hover:bg-white group-hover:text-black">
-                    →
-                  </span>
-                </Link>
-              ))}
+                    {/* Link Information */}
+                    <div className="min-w-0 py-2">
+                      <p className="text-[9px] font-serif uppercase tracking-[0.3em] text-foreground/50 sm:text-[10px]">
+                        {`0${index + 1}`}
+                      </p>
+
+                      <h3 className="mt-2 font-serif text-xl leading-tight text-primary sm:text-2xl md:text-3xl">
+                        {link.title}
+                      </h3>
+
+                      <p className="mt-2 text-xs leading-relaxed tracking-wide text-foreground/60 sm:text-sm">
+                        {link.description}
+                      </p>
+                    </div>
+
+                    {/* Arrow */}
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/20 text-lg text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground sm:h-12 sm:w-12 md:h-14 md:w-14">
+                      <span
+                        aria-hidden="true"
+                        className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      >
+                        →
+                      </span>
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
