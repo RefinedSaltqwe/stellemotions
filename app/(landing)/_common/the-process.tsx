@@ -12,8 +12,8 @@ const Process: React.FC<ProcessProps> = () => {
       <div className="flex flex-col items-center justify-center max-w-7xl mx-auto px-4 py-20 md:py-32 gap-12">
         <Heading
           textColor="whiteMuted"
-          eyebrow="Where adventure begins"
-          title="The Stellar Experience"
+          eyebrow="THE STELLAR EXPERIENCE"
+          title="From the first hello to the final gallery."
         />
 
         <div className="flex flex-col w-full items-start gap-12 md:gap-4 md:flex-row px-14 md:px-0">

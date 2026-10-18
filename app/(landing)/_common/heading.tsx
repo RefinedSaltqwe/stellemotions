@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const TEXT_COLORS = {
+export const TEXT_COLORS = {
   white: {
     sub: "text-muted",
     main: "text-muted",

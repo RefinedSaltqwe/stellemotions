@@ -12,6 +12,7 @@ type PricingProps = {
   imagePosition?: string;
   spacing?: string;
   image?: string;
+  extraFees: string;
   price: string;
 };
 
@@ -23,6 +24,7 @@ const Pricing: React.FC<PricingProps> = ({
   spacing = "md:py-0",
   image = "/assets/images/stellemotions-hero.jpg",
   price,
+  extraFees,
   imagePosition = "-translate-y-36 md:-translate-y-20",
 }) => {
   return (
@@ -43,12 +45,13 @@ const Pricing: React.FC<PricingProps> = ({
             {description}
           </p>
           <ul className="list-disc pl-5 marker:text-primary marker:text-sm">
-            {list?.split(",").map((item, index) => (
+            {list?.split(";").map((item, index) => (
               <li key={index} className="tracking-wide font-light leading-7">
                 {item.trim()}
               </li>
             ))}
           </ul>
+          <span className="text-sm text-muted-foreground ">{extraFees}</span>
           <span className="text-xs">{price}</span>
           <div>
             <Button asChild className="mt-14">

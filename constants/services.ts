@@ -55,25 +55,27 @@ export const services = [
 
 export const pricingData = [
   {
-    title: "Full Day Wedding",
+    title: "Half Day Wedding",
     description:
-      'From the quiet moments before "I do" to the celebration on the dance floor, this collection is designed to preserve your entire wedding story with care and intention.',
-    list: "Up to 12 Hours of Wedding Day Coverage, 2 Photographers, Unlimited Shots, 500+ Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Downloads, Final Gallery Delivered Within 2–4 Weeks, Travel & Accommodation Fees Apply for Destination Weddings",
+      "For intimate celebrations and shorter wedding days, we'll capture the moments that matter most; From the anticipation before your ceremony to the portraits and embraces that follow.",
+    list: "Up to 6 hours of wedding day photography;Complimentary engagement session included; Two photographers to capture different perspectives; Minimum 300 carefully edited, high-resolution photographs; Sneak peeks delivered within one week; A private online gallery to view, download, and share your photographs; Complete gallery delivered within 2–4 weeks",
     image:
       "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/240930-210343-DSC02166.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzI0MDkzMC0yMTAzNDMtRFNDMDIxNjYuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzMzNTI5NSwiZXhwIjoyMTAyNjk1Mjk1fQ.ycXiXDm4OWR06V5u_lns5C40dXdFazhZnBErCEs8HbA",
-    price: "Starting at $2,000 CAD",
+    extraFees: "Travel & Accommodation Fees May Apply for Destination Weddings",
+    price: "Starting at $1,500 CAD",
     position: "flex-col-reverse md:flex-row",
     spacing: "md:pt-10",
     imagePosition: undefined,
   },
   {
-    title: "Half Day Wedding",
+    title: "Full Day Wedding",
     description:
-      "Perfect for intimate celebrations and shorter wedding days, this collection focuses on the moments that matter most, from your ceremony to portraits and the beginning of your celebration.",
-    list: "Up to 6 Hours of Wedding Day Coverage, 2 Photographers, Unlimited Shots, 300+ Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Downloads, Final Gallery Delivered Within 2–4 Weeks, Travel & Accommodation Fees Apply for Destination Weddings",
+      "From the quiet moments of getting ready to the joy on the dance floor, your wedding day is filled with moments you may not even realize are happening. We're here to document the whole story, so you can be present while we preserve the memories.",
+    list: "Up to 12 hours of wedding day photography; Complimentary engagement session included; Two photographers to capture more of the moments happening throughout your day; Minimum 500 carefully edited, high-resolution photographs; Sneak peeks delivered within one week; A private online gallery to view, download, and share your photographs; Complete gallery delivered within 2–4 weeks",
     image:
       "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/DSC01907.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0RTQzAxOTA3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODczMzUyMjQsImV4cCI6MjEwMjY5NTIyNH0.tOPBrxMBq59Jkrzc-B8L1J_vxn8s4KSRyHyHYuCY31A",
-    price: "Starting at $1,500 CAD",
+    extraFees: "Travel & Accommodation Fees May Apply for Destination Weddings",
+    price: "Starting at $2,000 CAD",
     position: "flex-col-reverse md:flex-row-reverse",
     spacing: "pt-36 md:pt-14",
     imagePosition: "-translate-y-36 md:-translate-y-0",
@@ -81,11 +83,12 @@ export const pricingData = [
   {
     title: "Couples & Lifestyle",
     description:
-      "Whether you're celebrating a milestone or simply preserving this season of life, these sessions are designed to capture genuine connection and authentic moments through soft, cinematic imagery. Perfect for couples, families, graduates, creatives, and personal brands.",
-    list: "Up to 2 Hours of Session Coverage, 2 Photographers, Unlimited Shots, 50–100 Handcrafted High-Resolution Edited Images, Sneak Peek Gallery Delivered Within One Week, Private Online Gallery for Viewing, Sharing & Unlimited Downloads, Outfit & Location Consultation, Final Gallery Delivered Within 1–2 Weeks, Travel Fees May Apply for Locations Outside the Local Area",
+      "Whether you're celebrating your relationship, growing your family, marking a milestone, or simply wanting photographs together, we'll create a relaxed experience that lets your connection shine.",
+    list: "Up to 2 hours of photography; Two photographers; 50–100 carefully edited, high-resolution photographs; Outfit and location consultation; A private online gallery to view, download, and share your photographs; Sneak peeks delivered within one week; Complete gallery delivered within 1–2 weeks",
     image:
       "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/251108-134046-A7402629.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nLzI1MTEwOC0xMzQwNDYtQTc0MDI2MjkuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NzMzNjQwNywiZXhwIjoyMTAyNjk2NDA3fQ.R5Uv_7Ii3W8OsiVyvQbdrRkfZtNCLslTpNEoc9GfAMM",
-    price: "Starting at $250 CAD",
+    extraFees: "Travel Fees May Apply for Locations Outside the Local Area",
+    price: "Starting at $200 CAD",
     position: "flex-col-reverse md:flex-row",
     spacing: "pt-36 md:pb-10 md:pt-50",
     imagePosition: undefined,
@@ -162,28 +165,53 @@ export const processGuide = [
 
 export const faqs = [
   {
-    question: "How do we book a session or wedding?",
+    question: "How do we book our date?",
     answer:
-      "Start by submitting an inquiry through our contact form. Once we've confirmed availability, we'll send over your proposal, contract, and invoice. Your date is officially reserved once the signed agreement and retainer have been received.",
-  },
-  {
-    question: "Do you help with posing?",
-    answer:
-      "Absolutely. You don't need any experience in front of the camera. We'll gently guide you throughout the session while allowing genuine moments and natural interactions to unfold.",
+      "Start by submitting an inquiry through our contact form. Once we've confirmed our availability and discussed your plans, we'll send over your photography agreement and invoice. Your date is officially reserved once the signed agreement and 30% retainer have been received. The remaining balance is due one week before your wedding or session.",
   },
   {
     question: "When will we receive our photos?",
     answer:
-      "Sneak peeks are typically delivered within one week. Wedding galleries are delivered within 6–8 weeks, while portrait and lifestyle sessions are usually ready within 2–3 weeks.",
+      "You'll receive a sneak peek gallery within one week. Full wedding galleries are delivered within 2–4 weeks, while Couples & Lifestyle galleries are delivered within 1–2 weeks.",
   },
   {
-    question: "Do you travel for sessions and weddings?",
+    question: "Do you travel outside Regina?",
     answer:
-      "Yes! We're based in Regina, Saskatchewan, and are available for travel throughout Canada. Travel or accommodation fees may apply depending on the location.",
+      "Absolutely! We're based in Regina, Saskatchewan, and are available for weddings and photography sessions throughout Canada. Travel and accommodation fees may apply depending on your location.",
   },
   {
-    question: "What should we wear for our session?",
+    question: "Is a pre-wedding session included in our wedding package?",
     answer:
-      "We recommend timeless, neutral-toned outfits that feel comfortable and authentic to you. After booking, we'll provide a styling guide with helpful tips to ensure your photos look natural and cohesive.",
+      "Yes! A complimentary pre-wedding session is included with both our Half Day Wedding and Full Day Wedding collections. It's a wonderful opportunity to get comfortable in front of our cameras and capture beautiful photographs together before your wedding day.",
+  },
+  {
+    question: "What if we're awkward or don't know how to pose?",
+    answer:
+      "You don't need any photography experience to work with us. We'll offer gentle guidance when needed while allowing genuine moments to unfold naturally. Our goal is to help you feel comfortable, be yourselves, and enjoy the experience together.",
+  },
+  {
+    question: "How many photos will we receive?",
+    answer:
+      "Every story is different, but each collection includes a thoughtfully edited gallery of high-resolution photographs. Our Half Day Wedding collection includes 300+ images, Full Day Wedding includes 500+ images, and Couples & Lifestyle sessions include 50–100 images.",
+  },
+  {
+    question: "How will we receive our photographs?",
+    answer:
+      "Your photographs will be delivered through a private online gallery where you can view, download, and share your images with family and friends. You can revisit your gallery whenever you want to relive those special moments.",
+  },
+  {
+    question: "Can we request specific photos or poses?",
+    answer:
+      "Of course! We'd love to hear about the moments, people, and details that matter most to you. You can share your must-have photographs and family groupings with us beforehand. We'll help guide the process while leaving room for genuine, unplanned moments.",
+  },
+  {
+    question: "What happens if our wedding date or schedule changes?",
+    answer:
+      "We understand that plans can change. Please contact us as soon as possible if your date or schedule needs to change. We'll discuss your situation, review our photography agreement, and determine what arrangements may be possible.",
+  },
+  {
+    question: "Is the 30% retainer refundable?",
+    answer:
+      "Our retainer and cancellation terms are outlined in your photography agreement. We'll explain the applicable terms before you book, so you understand the booking conditions and what happens if your plans change.",
   },
 ];

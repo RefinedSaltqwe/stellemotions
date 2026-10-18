@@ -25,6 +25,7 @@ const ServicesPage: React.FC = () => {
       <CTASimpleSection
         eyebrow="Your story starts here."
         title="LET'S TELL YOUR STORY"
+        description="Whether you're celebrating an intimate gathering or a full day surrounded by everyone you love, we'd be honoured to document it. Tell us a little about your plans, and let's see if we're the right fit for each other."
         buttonText="INQUIRE NOW"
         buttonHref="/inquire"
       />

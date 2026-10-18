@@ -16,6 +16,7 @@ const ServiceClient: React.FC = () => {
             spacing={service.spacing}
             image={service.image}
             price={service.price}
+            extraFees={service.extraFees}
           />
         </div>
       ))}
