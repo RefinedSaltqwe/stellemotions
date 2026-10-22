@@ -81,7 +81,7 @@ export const pricingData = [
     imagePosition: "-translate-y-36 md:-translate-y-0",
   },
   {
-    title: "Couples & Lifestyle",
+    title: "Short Sessions",
     description:
       "Whether you're celebrating your relationship, growing your family, marking a milestone, or simply wanting photographs together, we'll create a relaxed experience that lets your connection shine.",
     list: "Up to 2 hours of photography; Two photographers; 50–100 carefully edited, high-resolution photographs; Outfit and location consultation; A private online gallery to view, download, and share your photographs; Sneak peeks delivered within one week; Complete gallery delivered within 1–2 weeks",
