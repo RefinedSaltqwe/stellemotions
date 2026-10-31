@@ -71,7 +71,7 @@ export const pricingData = [
     title: "Full Day Wedding",
     description:
       "From the quiet moments of getting ready to the joy on the dance floor, your wedding day is filled with moments you may not even realize are happening. We're here to document the whole story, so you can be present while we preserve the memories.",
-    list: "Up to 12 hours of wedding day photography; Complimentary engagement session included; Two photographers to capture more of the moments happening throughout your day; Minimum 500 carefully edited, high-resolution photographs; Sneak peeks delivered within one week; A private online gallery to view, download, and share your photographs; Complete gallery delivered within 2–4 weeks",
+    list: "Up to 12 hours of wedding day photography; Complimentary engagement session included; Two photographers to capture more of the moments happening throughout your day; Minimum 600 carefully edited, high-resolution photographs; Sneak peeks delivered within one week; A private online gallery to view, download, and share your photographs; Complete gallery delivered within 2–4 weeks",
     image:
       "https://orvbrctfcblxbtaplsxp.supabase.co/storage/v1/object/sign/landing/DSC01907.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZTk1Y2I1NS1hYTExLTRiNDEtOWFkMy02MWFjZDcxYjQzZjYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsYW5kaW5nL0RTQzAxOTA3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODczMzUyMjQsImV4cCI6MjEwMjY5NTIyNH0.tOPBrxMBq59Jkrzc-B8L1J_vxn8s4KSRyHyHYuCY31A",
     extraFees: "Travel & Accommodation Fees May Apply for Destination Weddings",
